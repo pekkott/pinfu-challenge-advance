@@ -1,0 +1,444 @@
+:root {
+    --url-tile: url("");
+}
+
+#table {
+    position: absolute;
+    background-color: DarkSeaGreen;
+    border: 1px solid LightBlue;
+    width: 698px;
+    height: 764px;
+    top: 0px;
+    left: 0px;
+}
+
+#round {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20pt;
+}
+
+#sub-round {
+    position: absolute;
+    top: 350px;
+    left: 319px;
+    width: 62px;
+    height: 5px;
+    background: url('/mahjong-ui/images/b_8_2.gif');
+    background-size: 62px 5px;
+}
+
+.sub-round {
+    margin-left: 28px;
+    margin-top: 5px;
+}
+
+#ho-opposite {
+    position: absolute;
+    top: 40px;
+    left: 250px;
+}
+
+#ho-up {
+    position: absolute;
+    top: 255px;
+    left: 40px;
+}
+
+#ho-down {
+    position: absolute;
+    top: 255px;
+    left: 482px;
+}
+
+#ho-self {
+    position: absolute;
+    top: 493px;
+    left: 250px;
+}
+
+#wind-opposite {
+    position: absolute;
+    top: 251px;
+    left: 319px;
+}
+
+#wind-up {
+    position: absolute;
+    top: 327px;
+    left: 236px;
+}
+
+#wind-down {
+    position: absolute;
+    top: 327px;
+    left: 429px;
+}
+
+#wind-self {
+    position: absolute;
+    top: 436px;
+    left: 319px;
+}
+
+#point-opposite {
+    position: absolute;
+    width: 40px;
+    top: 279px;
+    left: 329px;
+}
+
+#point-up {
+    position: absolute;
+    width: 40px;
+    top: 332px;
+    left: 276px;
+}
+
+#point-down {
+    position: absolute;
+    width: 40px;
+    top: 332px;
+    left: 381px;
+}
+
+#point-self {
+    position: absolute;
+    width: 40px;
+    top: 399px;
+    left: 329px;
+}
+
+#hands-self {
+    position: absolute;
+    width: 429px;
+    height: 44px;
+    top: 704px;
+    left: 131px;
+}
+
+#tile-drawn-self {
+    position: absolute;
+    width: 33px;
+    height: 45px;
+    top: 704px;
+    left: 576px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#operation > button {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    left: 576px;
+}
+
+#ron {
+    top: 654px;
+}
+
+#skip {
+    top: 594px;
+}
+
+.display-none {
+    display: none;
+}
+
+.hands-row > ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.hands-row > ul > li {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.ho-vertical {
+    width: 198px;
+    height: 150px;
+}
+
+.ho-horizontal {
+    width: 176px;
+    height: 219px;
+}
+
+.tile-row > ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.tile-row > ul > li {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.tile-opposite {
+    background: var(--url-tile);
+}
+
+.tile-up {
+    background: var(--url-tile);
+}
+
+.tile-down {
+    background: var(--url-tile);
+}
+
+.tile-self {
+    background: var(--url-tile);
+}
+
+.tile-hand {
+    background: var(--url-tile);
+}
+
+.tile-vertical-middle {
+    float: left;
+    width: 33px;
+    height: 44px;
+}
+
+.tile-vertical-bottom {
+    float: left;
+    width: 33px;
+    height: 59px;
+}
+
+.tile-vertical-bottom-parts {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    float: left;
+    width: 33px;
+    height: 15px;
+    background: url('/mahjong-ui/images/tile_bottom_parts_vertical.gif');
+}
+
+.tile-vertical-place {
+    float: left;
+    width: 33px;
+    height: 44px;
+}
+
+.tile-horizontal-middle {
+    float: left;
+    width: 44px;
+    height: 34px;
+}
+
+.tile-horizontal-bottom {
+    float: left;
+    width: 44px;
+    height: 49px;
+}
+
+.tile-horizontal-bottom-parts {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    float: left;
+    width: 44px;
+    height: 15px;
+    background: url('/mahjong-ui/images/tile_bottom_parts_horizontal.gif');
+}
+
+.tile-horizontal-place {
+    float: left;
+    width: 44px;
+    height: 34px;
+}
+
+.tile-in-hands {
+    float: left;
+    width: 33px;
+    height: 45px;
+}
+
+.tile-drawn {
+    float: left;
+    width: 33px;
+    height: 45px;
+}
+
+.wind-vertical > div {
+    width: 33px;
+    height: 61px;
+}
+
+.wind-horizontal > div {
+    width: 60px;
+    height: 37px;
+}
+
+.wind-east-opposite {
+    background: url('/mahjong-ui/images/c_e_3.gif');
+}
+
+.wind-south-opposite {
+    background: url('/mahjong-ui/images/c_s_3.gif');
+}
+
+.wind-west-opposite {
+    background: url('/mahjong-ui/images/c_w_3.gif');
+}
+
+.wind-north-opposite {
+    background: url('/mahjong-ui/images/c_n_3.gif');
+}
+
+.wind-east-up {
+    background: url('/mahjong-ui/images/c_e_2.gif');
+}
+
+.wind-south-up {
+    background: url('/mahjong-ui/images/c_s_2.gif');
+}
+
+.wind-west-up {
+    background: url('/mahjong-ui/images/c_w_2.gif');
+}
+
+.wind-north-up {
+    background: url('/mahjong-ui/images/c_n_2.gif');
+}
+
+.wind-east-down {
+    background: url('/mahjong-ui/images/c_e_4.gif');
+}
+
+.wind-south-down {
+    background: url('/mahjong-ui/images/c_s_4.gif');
+}
+
+.wind-west-down {
+    background: url('/mahjong-ui/images/c_w_4.gif');
+}
+
+.wind-north-down {
+    background: url('/mahjong-ui/images/c_n_4.gif');
+}
+
+.wind-east-self {
+    background: url('/mahjong-ui/images/c_e_1.gif');
+}
+
+.wind-south-self {
+    background: url('/mahjong-ui/images/c_s_1.gif');
+}
+
+.wind-west-self {
+    background: url('/mahjong-ui/images/c_w_1.gif');
+}
+
+.wind-north-self {
+    background: url('/mahjong-ui/images/c_n_1.gif');
+}
+
+.point {
+    text-align: right;
+}
+
+.modal-area {
+    visibility: hidden;
+    opacity : 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 35%;
+    padding: 10px 40px;
+    background-color: Ivory;
+    border: 3px solid DimGray;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.close-modal {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.show-modal {
+    visibility: visible;
+    opacity : 1;
+}
+
+.round-result-header {
+    padding-left: 10px;
+    text-align: center;
+}
+
+.player-point {
+    padding-left: 20px;
+    text-align: right;
+}
+
+.player-point-diff {
+    padding-left: 10px;
+    text-align: right;
+}
+
+.game-result-header {
+    text-align: center;
+}
+
+.result-order {
+    padding-left: 30px;
+    text-align: right;
+}
+
+.result-point {
+    padding-left: 30px;
+    text-align: right;
+}
+
+#debug > button {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    left: 776px;
+}
+
+#debug-start {
+    top: 594px;
+}
+
+#debug-discard-tile {
+    top: 554px;
+}
+
+#debug-ron {
+    top: 514px;
+}
+
+#debug-next {
+    top: 474px;
+}
+
+#debug-result {
+    top: 434px;
+}
