@@ -13,6 +13,7 @@ class UserGameHistory(Base):
     date = Column('date', DateTime)
 
 
+    @staticmethod
     def add_new_record(user_id, game_id, rank, date):
         user_game_history = UserGameHistory()
         user_game_history.user_id = user_id
