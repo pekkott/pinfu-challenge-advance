@@ -1,15 +1,9 @@
-import sys
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, DateTime
-from setting import Base
-from setting import ENGINE
-from model.user import User
-from model.user_game_history import UserGameHistory
-from datetime import datetime, timedelta, timezone
+from setting import Base, ENGINE
+from models.user import User
+from models.user_game_history import UserGameHistory
 
-def run():
+def init():
     Base.metadata.create_all(bind=ENGINE)
 
-
 if __name__ == '__main__':
-    run()
+    init()
