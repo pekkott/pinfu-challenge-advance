@@ -1,7 +1,0 @@
-.DS_Store
-# data dir for mysql
-docker-images/mysql/data/
-local_info.md
-
-__pycache__/
-*.pyc
