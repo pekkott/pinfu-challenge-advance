@@ -3,5 +3,8 @@
 docker-images/mysql/data/
 local_info.md
 
+# ansible-galaxy role
+roles/geerlingguy.*
+
 __pycache__/
 *.pyc

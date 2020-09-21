@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  mahjong:
+    image: mahjong:latest
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    volumes:
+      - "{{ working_directory }}/pinfu-challenge/hands-calculation:/var/www"
+    command:
+      /bin/sh -c "python /var/www/api-server.py"
+    restart: always

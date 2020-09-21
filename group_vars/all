@@ -1,0 +1,12 @@
+admin_user: { uid: 100, name: pinfuchan, system: no }
+working_directory: "/home/{{ admin_user.name }}"
+
+docker_users:
+  - "{{ admin_user.name }}"
+
+app_name: pinfu-challenge
+
+docker_container_names: []
+
+hands_caluculation_server_ip_address: ""
+hands_caluculation_server_port: 8000

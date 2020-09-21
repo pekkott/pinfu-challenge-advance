@@ -6,8 +6,10 @@ import (
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"math"
+	"os"
 )
 
 const (
@@ -31,7 +33,9 @@ type PinfuInfo struct {
 }
 
 func (p *PinfuQuery) Query() *PinfuInfo {
-	url := "http://host.docker.internal:8000"
+	ip_address := os.Getenv("HANDS_CALUCULATION_SERVER_IP_ADDRESS")
+	port := os.Getenv("HANDS_CALUCULATION_SERVER_PORT")
+	url := fmt.Sprintf("http://%s:%s", ip_address, port)
 	j, _ := json.Marshal(p)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
 	req.Header.Set("Content-Type", "application/json")
