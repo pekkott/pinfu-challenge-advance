@@ -23,8 +23,8 @@
   remote_user: root
   connection: local
   roles:
-    - pinfu-challenge.sshd-configuration
     - pinfu-challenge.account
+    - pinfu-challenge.sshd-configuration
     - pinfu-challenge.apply-jst
 
 - hosts:
