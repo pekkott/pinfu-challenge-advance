@@ -1,7 +1,7 @@
 ---
 
 - name: docker-compose up
-  command: docker-compose up -d
+  command: /usr/local/bin/docker-compose up -d
   become_user: "{{ admin_user.name }}"
   environment:
     COMPOSE_FILE: "{{ 'docker-compose-' + '.yml:docker-compose-'.join(docker_container_names) + '.yml'}}"
