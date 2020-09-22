@@ -1,0 +1,12 @@
+---
+
+- name: buffering public key
+  local_action:
+    shell cat /home/{{ item.name }}/.ssh/id_rsa.pub
+  register: public_key
+  changed_when: False
+
+- name: add authorized_key
+  authorized_key:
+    user="{{ item.name }}"
+    key="{{ public_key.stdout }}"

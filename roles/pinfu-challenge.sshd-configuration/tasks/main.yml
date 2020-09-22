@@ -1,0 +1,13 @@
+---
+
+- name: Disable ssh login by root
+  lineinfile:
+    dest=/etc/ssh/sshd_config
+    line="PermitRootLogin no"
+    state=present
+  notify: restart sshd
+
+- name: Copy a ssh config file
+  template:
+    src=config.j2
+    dest="{{ working_directory }}/.ssh"

@@ -1,5 +1,8 @@
-admin_user: { uid: 100, name: pinfuchan, system: no }
+admin_user: { uid: 100, name: pinfuchan, group: wheel }
 working_directory: "/home/{{ admin_user.name }}"
+
+system_accounts:
+  - "{{ admin_user }}"
 
 docker_users:
   - "{{ admin_user.name }}"

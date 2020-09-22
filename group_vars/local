@@ -1,4 +1,4 @@
-admin_user: { uid: 1000, name: vagrant, system: no }
+admin_user: { uid: 1000, name: vagrant, group: vagrant }
 
 docker_container_names: ["mahjong", "mahjong-play-manager"]
 

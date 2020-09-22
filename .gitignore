@@ -1,3 +1,5 @@
+.vagrant/
+
 .DS_Store
 # data dir for mysql
 docker-images/mysql/data/
