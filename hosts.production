@@ -1,0 +1,13 @@
+[production_ci]
+192.168.0.1
+
+[production_game]
+192.168.0.2
+
+[all:children]
+production_ci
+production_game
+
+[production:children]
+production_ci
+production_game

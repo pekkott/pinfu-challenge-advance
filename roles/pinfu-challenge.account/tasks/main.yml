@@ -1,0 +1,24 @@
+---
+
+- name: add a user to sudoer
+  template:
+    src=account.j2
+    dest=/etc/sudoers.d/{{ admin_user.name }}_account
+
+- name: add server users
+  user:
+    name={{ item.name }}
+    uid={{ item.uid }}
+    home=/home/{{ item.name }}
+    generate_ssh_key=yes
+    groups={{ item.group }}
+    shell=/bin/bash
+    state=present
+  with_items:
+    "{{ system_accounts }}"
+  changed_when: False
+
+# register ssh keys
+- include: register-public-key.yml
+  with_items:
+    "{{ system_accounts }}"

@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  mahjong-play-manager:
+    image: mahjong-play-manager:latest
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    volumes:
+      - "/home/{{ admin_user.name }}/pinfu-challenge:/var/www"
+    command:
+      /bin/sh -c "cd /var/www/mahjong-play-manager; go run *.go"
+    environment:
+      - HANDS_CALUCULATION_SERVER_IP_ADDRESS={{ hands_caluculation_server_ip_address }}
+      - HANDS_CALUCULATION_SERVER_PORT={{ hands_caluculation_server_port }}
+    restart: always

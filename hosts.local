@@ -1,0 +1,13 @@
+[local_ci]
+192.168.33.70
+
+[local_game]
+192.168.33.71
+
+[all:children]
+local_ci
+local_game
+
+[local:children]
+local_ci
+local_game

@@ -1,9 +1,18 @@
 # 使い方
 
+## ローカル環境構築
+```
+vagrant up
+vagrant ssh ci
+cd pinfu-challenge
+ansible-galaxy install -p roles -r requirements.yml
+ansible-playbook -i hosts.local provision.yml --become
+```
+
 ## Dockerイメージビルド
 
 ```
-cd /path/to/pinfu-challenge/docker-images
+cd pinfu-challenge/docker-images
 docker image build mahjong --tag mahjong
 docker image build mahjong-play-manager --tag mahjong-play-manager
 ```
@@ -11,20 +20,19 @@ docker image build mahjong-play-manager --tag mahjong-play-manager
 ## コンテナ起動
 
 ```
-docker run --rm --name mahjong -v /path/to/pinfu-challenge/hands-calculation:/var/www -p 8000:8000 mahjong /bin/sh -c "python /var/www/api-server.py"
-docker run --rm --name mahjong-play-manager -v /path/to/pinfu-challenge/var/www/ -p 8080:8080 mahjong-play-manager /bin/sh -c "cd /var/www/mahjong-play-manager; go run *.go"
+docker run --rm --name mahjong -v ~/pinfu-challenge/hands-calculation:/var/www -p 8000:8000 mahjong /bin/sh -c "python /var/www/api-server.py"
+docker run --rm --name mahjong-play-manager -v ~/pinfu-challenge:/var/www/ -p 8080:8080 mahjong-play-manager /bin/sh -c "cd /var/www/mahjong-play-manager; go run *.go"
 ```
 
 ## mahjong API実行
 
 ```
-curl -H 'Content-Type:application/json' -d '{"man":"22223333444488","pin":"","sou":"","honors":"","player_wind":27,"round_wind":27,"win_tile_type":"man","win_tile_value":"4"}' http\://localhost:8000
+curl -H 'Content-Type:application/json' -d '{"man":"22223333444488","pin":"","sou":"","honors":"","player_wind":27,"round_wind":27,"win_tile_type":"man","win_tile_value":"4"}' http://localhost:8000
 ```
 
 ## コンテナ停止
 ```
-docker stop mahjong
-docker stop mahjong-play-manager
+docker-compose -f docker-compose-mahjong.yml -f docker-compose-mahjong-play-manager.yml down
 ```
 
 # 画像

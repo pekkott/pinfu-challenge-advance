@@ -1,0 +1,3 @@
+# ansible-galaxy
+- src: geerlingguy.docker
+  version: 2.8.2
