@@ -12,7 +12,7 @@ import os
 # )
 DATABASE = 'mysql://{user}:{password}@{host}/matching_service?charset=utf8'.format(**{
         'user': os.getenv('MYSQL_USER', 'root'),
-        'password': os.getenv('MYSQL_PASSWORD', ''),
+        'password': os.getenv('MYSQL_PASSWORD', 'rootpassword12345hogefuga'),
         'host': os.getenv('DB_HOST', 'mysql_c'),
     })
 ENGINE = create_engine(
