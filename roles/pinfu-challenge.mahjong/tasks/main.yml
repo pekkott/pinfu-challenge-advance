@@ -1,0 +1,6 @@
+---
+
+- name: copy docker-compose.yml
+  template:
+    src=docker-compose.yml.j2
+    dest="{{ working_directory }}/docker-compose-mahjong.yml"

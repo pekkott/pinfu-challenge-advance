@@ -1,0 +1,16 @@
+---
+
+- name: remove localtime
+  file:
+    path=/etc/localtime
+    state=absent
+  changed_when: False
+
+- name: make symlink to JST
+  file:
+    src=/usr/share/zoneinfo/Asia/Tokyo
+    dest=/etc/localtime
+    state=link
+    force=yes
+    mode=0644
+  changed_when: False
