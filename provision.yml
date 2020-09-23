@@ -32,6 +32,7 @@
   remote_user: root
   roles:
     - pinfu-challenge.account
+    - pinfu-challenge.sshd-configuration
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
     - pinfu-challenge.docker-build-image
