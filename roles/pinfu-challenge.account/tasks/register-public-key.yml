@@ -2,7 +2,7 @@
 
 - name: buffering public key
   local_action:
-    shell cat /home/{{ item.name }}/.ssh/id_rsa.pub
+    shell cat /home/{{ item.name }}/.ssh/authorized_keys
   register: public_key
   changed_when: False
 
