@@ -11,7 +11,7 @@
     - mysql起動確認：`mysql -umatching_api -p -h 127.0.0.1`
 
 
-- DB初期化
+- DB作成
   - `docker run --rm --network matching-network  -v /home/vagrant/pinfu-challenge:/pinfu-challenge  --name python_c -it python:latest  python /pinfu-challenge/app/init.py`
 - DBテスト
   - `docker run --rm --network matching-network  -v /home/vagrant/pinfu-challenge:/pinfu-challenge  --name python_c -it -p 5000:5000 python:latest python /pinfu-challenge/app/test.py`
