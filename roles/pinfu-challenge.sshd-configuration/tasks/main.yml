@@ -6,6 +6,7 @@
     regexp="PermitRootLogin yes"
     replace="PermitRootLogin no"
   notify: restart sshd
+  when: "{{ ssh_permit_root_login }}"
 
 - name: Copy a ssh config file
   template:
