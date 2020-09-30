@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from setting import Base, ENGINE, session
 
