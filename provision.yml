@@ -3,14 +3,12 @@
   remote_user: vagrant
   connection: local
   roles:
-    - pinfu-challenge.account
     - pinfu-challenge.apply-jst
 
 - hosts:
     - local_game
   remote_user: vagrant
   roles:
-    - pinfu-challenge.account
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
     - pinfu-challenge.docker-build-image
@@ -23,7 +21,6 @@
   remote_user: root
   connection: local
   roles:
-    - pinfu-challenge.account
     - pinfu-challenge.sshd-configuration
     - pinfu-challenge.apply-jst
 

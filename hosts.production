@@ -8,6 +8,9 @@
 production_ci
 production_game
 
+[all_ci:children]
+production_ci
+
 [production:children]
 production_ci
 production_game

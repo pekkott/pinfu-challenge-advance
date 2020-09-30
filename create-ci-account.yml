@@ -1,0 +1,6 @@
+- hosts:
+    - production_ci
+  remote_user: root
+  connection: local
+  roles:
+    - pinfu-challenge.account

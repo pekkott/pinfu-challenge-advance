@@ -9,6 +9,21 @@ ansible-galaxy install -p roles -r requirements.yml
 ansible-playbook -i hosts.local provision.yml --become
 ```
 
+## ConoHa環境構築
+### game
+```
+yum install -y git
+git clone https://github.com/pekkott/pinfu-challenge-advance.git pinfu-challenge
+```
+
+### ci
+```
+yum install -y git ansible
+cd pinfu-challenge
+ansible-galaxy install -p roles -r requirements.yml
+ansible-playbook -i hosts.production provision.yml --become
+```
+
 ## Dockerイメージビルド
 
 ```
