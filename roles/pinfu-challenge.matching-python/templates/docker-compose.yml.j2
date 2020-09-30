@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  matching-python:
+    image: matching-python:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/home/{{ admin_user.name }}/pinfu-challenge:/var/www"
+    #environment:
+      #- MYSQL_USER="matching_api"
+      #- MYSQL_PASSWORD="{{ mysql_pass }}"
+    command:
+      python /var/www/matching/matching.py
+    restart: always

@@ -12,5 +12,9 @@ app_name: pinfu-challenge
 
 docker_container_names: []
 
+mysql_root_pass : your_root_pass_12345
+mysql_pass: your_pass_12345
+
+
 hands_caluculation_server_ip_address: ""
 hands_caluculation_server_port: 8000

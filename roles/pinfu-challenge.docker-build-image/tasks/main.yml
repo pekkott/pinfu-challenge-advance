@@ -7,3 +7,5 @@
   with_items:
     - mahjong
     - mahjong-play-manager
+    - matching-mysql
+    - matching-python

@@ -4,8 +4,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from flask import Flask, request, jsonify
 import json
-from app.models.user import User
-from app.models.user_game_history import UserGameHistory
+from models.user import User
+from models.user_game_history import UserGameHistory
 
 app = Flask(__name__)
 

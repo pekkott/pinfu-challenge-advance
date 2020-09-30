@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  matching-mysql:
+    image: matching-mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - "/home/{{ admin_user.name }}/pinfu-challenge/docker-images/matching-mysql/data:/var/lib/mysql"
+    command:
+      mysqld --innodb_use_native_aio=0
+    #environment:
+      #- MYSQL_DATABASE="matching_service"
+      #- MYSQL_USER="matching_api"
+      #- MYSQL_ROOT_PASSWORD="{{ mysql_root_pass }}"
+      #- MYSQL_PASSWORD="{{ mysql_pass }}"
+    restart: always
