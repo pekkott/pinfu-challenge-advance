@@ -1,4 +1,7 @@
 import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from setting import Base, ENGINE, session
@@ -7,13 +10,13 @@ INITIAL_RATING = 1500
 class User(Base):
     __tablename__ = 'users'
     user_id = Column('user_id', Integer, primary_key = True)
-    strength = Column('strength', Integer)
+    strength = Column('strength_index', Integer)
 
     @staticmethod
     def add_new_user(user_id):
         try:
             user = User()
-            user.id = user_id
+            user.user_id = user_id
             user.strength = INITIAL_RATING
             session.add(user)
             session.commit()
