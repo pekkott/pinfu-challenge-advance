@@ -1,5 +1,5 @@
 admin_user: { uid: 100, name: pinfuchan, group: wheel }
 
-docker_container_names: ["mahjong", "mahjong-play-manager"]
+docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "matching-python"]
 
 hands_caluculation_server_ip_address: "{{ groups.production_game[0] }}"

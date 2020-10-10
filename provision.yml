@@ -38,4 +38,7 @@
     - pinfu-challenge.docker-build-image
     - pinfu-challenge.mahjong
     - pinfu-challenge.mahjong-play-manager
+    - pinfu-challenge.matching-mysql
+    - pinfu-challenge.matching-python
     - pinfu-challenge.docker-compose
+    - pinfu-challenge.matching-init-db
