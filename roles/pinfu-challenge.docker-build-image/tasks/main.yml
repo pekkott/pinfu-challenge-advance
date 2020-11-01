@@ -1,7 +1,7 @@
 ---
 
 - name: build docker image
-  command: docker build ./ -t {{ item }} --no-cache
+  command: docker build ./ -t {{ item }}
   args:
     chdir: "{{ working_directory }}/{{ app_name }}/docker-images/{{ item }}"
   with_items:
