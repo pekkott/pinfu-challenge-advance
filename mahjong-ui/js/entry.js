@@ -7,6 +7,7 @@ class EntryManager {
 
     openMatchingModal() {
         this.startModal.showModal();
+        window.location.href = '/mahjong-ui/mahjong-ui.html?group_id=hogefuga';
     }
 }
 
