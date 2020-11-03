@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Pinfu Challenge</title>
+        <link rel="stylesheet" type="text/css" href="/mahjong-ui/entry.css" />
+        <script src="/mahjong-ui/js/nanoJS.min.js"></script>
+        <script src="/mahjong-ui/js/entry.js"></script>
+        <script>
+            window.onload = function() {
+                new EntryManager();
+            }
+        </script>
+    </head>
+    <body class="bg">
+        <div class="title">
+            <ul>
+                <li class="title-pi"/>
+                <li class="title-n"/>
+                <li class="title-fu"/>
+                <li class="title-ti"/>
+                <li class="title-ya-small title-small"/>
+                <li class="title-re"/>
+                <li class="title-n"/>
+                <li class="title-zi"/>
+            </ul>
+        </div>
+        <section id="modal-start" class="modal-area">
+            <p class="modal-wrapper">
+                マッチング中です
+            </p>
+        </section>
+        <button id="start-button">対戦する</button>
+    </body>
+</html>

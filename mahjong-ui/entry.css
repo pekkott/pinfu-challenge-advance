@@ -1,0 +1,118 @@
+.bg {
+    background-size: auto,
+        auto,
+        auto,
+        85% 85%;
+    background-image: url("/mahjong-ui/images/building_ma-jan_jansou.png"),
+        url("/mahjong-ui/images/landmark_hachikou.png"),
+        url("/mahjong-ui/images/landmark_moyai_shibuya.png"),
+        url("/mahjong-ui/images/city_night_yoruno_machi.png");
+    background-repeat: no-repeat;
+    background-position: bottom center,
+        bottom left,
+        bottom right,
+        bottom center;
+}
+
+.title {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.title > ul > li {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    float: left;
+    width: 10%;
+    height: 20%;
+    list-style: none;
+    background-repeat: no-repeat;
+}
+
+.title-small {
+    top: 30px;
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.cb {
+    float: left;
+}
+
+.landmark {
+    float: none;
+}
+
+.title-pi {
+    background: url('/mahjong-ui/images/katakana_57_pi.png');
+}
+
+.title-n {
+    background: url('/mahjong-ui/images/katakana_78_n.png');
+}
+
+.title-fu {
+    background: url('/mahjong-ui/images/katakana_48_fu.png');
+}
+
+.title-ti {
+    background: url('/mahjong-ui/images/katakana_32_ti.png');
+}
+
+.title-ya-small {
+    background: url('/mahjong-ui/images/katakana_84_ya_small.png');
+}
+
+.title-re {
+    background: url('/mahjong-ui/images/katakana_72_re.png');
+}
+
+.title-zi {
+    background: url('/mahjong-ui/images/katakana_27_zi.png');
+}
+
+#start-button {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.modal-area {
+    visibility: hidden;
+    opacity : 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 35%;
+    padding: 10px 40px;
+    background-color: Ivory;
+    border: 3px solid DimGray;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.show-modal {
+    visibility: visible;
+    opacity : 1;
+}
