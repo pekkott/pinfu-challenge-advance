@@ -227,6 +227,7 @@ func serveWs(hubManager *HubManager, w http.ResponseWriter, r *http.Request) {
 		hub = hubManager.createHub(groupId)
 		defer hub.run()
 	}
+	log.Println(groupId)
 
 	client := &Client{hub: hub, conn: conn, send: make(chan []byte, 256), playerId: hub.mahjongPlayManager.newPlayerNumber()}
 	hub.setClient(client)

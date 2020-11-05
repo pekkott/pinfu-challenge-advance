@@ -2,12 +2,20 @@ class EntryManager {
     constructor() {
         this.startModal = new StartModal('#modal-start');
 
-        $('#start-button').on('click', (event) => this.openMatchingModal());
+        $('#start-free').on('click', (event) => this.openMatchingModal());
+        $('#start-set').on('click', (event) => this.startSet());
     }
 
     openMatchingModal() {
         this.startModal.showModal();
-        window.location.href = '/mahjong-ui/mahjong-ui.html?group_id=hogefuga';
+    }
+
+    startSet() {
+        if (document.start.group_id.value != "") {
+            document.start.submit();
+        } else {
+            alert("セット名を入力してください");
+        }
     }
 }
 

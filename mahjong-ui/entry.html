@@ -29,6 +29,12 @@
                 マッチング中です
             </p>
         </section>
-        <button id="start-button">対戦する</button>
+        <form name="start" action="/mahjong-ui/mahjong-ui.html" method="GET">
+            <div class="start-button">
+                <button id="start-free" type="button">フリー</button>
+                <button id="start-set" type="button">セット</button>
+                <input type="text" placeholder="セット名" name="group_id"></input>
+            </div>
+        </form>
     </body>
 </html>
