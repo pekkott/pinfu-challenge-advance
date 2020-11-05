@@ -2,7 +2,7 @@
     background-size: auto,
         auto,
         auto,
-        85% 85%;
+        contain;
     background-image: url("/mahjong-ui/images/building_ma-jan_jansou.png"),
         url("/mahjong-ui/images/landmark_hachikou.png"),
         url("/mahjong-ui/images/landmark_moyai_shibuya.png"),
