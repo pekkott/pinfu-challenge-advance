@@ -25,15 +25,12 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	hubManager := newHubManager()
 	flag.Parse()
-	m := MahjongPlayManager{}
-	m.Init()
-	hub := newHub(&m)
-	go hub.run()
 	http.HandleFunc("/", serveHome)
 	http.Handle("/mahjong-ui/", http.StripPrefix("/mahjong-ui/", http.FileServer(http.Dir("../mahjong-ui"))))
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
-		serveWs(hub, w, r)
+		serveWs(hubManager, w, r)
 	})
 	err := http.ListenAndServe(*addr, nil)
 	if err != nil {
