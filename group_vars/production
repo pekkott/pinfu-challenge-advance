@@ -4,4 +4,4 @@ docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "m
 
 mahjong_play_manager_server_name: "150.95.214.93"
 
-hands_caluculation_server_ip_address: "{{ groups.production_game[0] }}"
+hands_caluculation_server_ip_address: mahjong
