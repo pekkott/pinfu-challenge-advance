@@ -11,6 +11,7 @@
   roles:
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
+    - pinfu-challenge.nginx
     - pinfu-challenge.docker-build-image
     - pinfu-challenge.mahjong
     - pinfu-challenge.mahjong-play-manager
@@ -35,6 +36,7 @@
     - pinfu-challenge.sshd-configuration
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
+    - pinfu-challenge.nginx
     - pinfu-challenge.docker-build-image
     - pinfu-challenge.mahjong
     - pinfu-challenge.mahjong-play-manager
