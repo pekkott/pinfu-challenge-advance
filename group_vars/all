@@ -1,6 +1,7 @@
 admin_user: { uid: 100, name: pinfuchan, group: wheel }
 working_directory: "/home/{{ admin_user.name }}"
 ssh_permit_root_login: False
+firewall_open_ports: []
 
 system_accounts:
   - "{{ admin_user }}"

@@ -26,6 +26,7 @@
   connection: local
   roles:
     - pinfu-challenge.sshd-configuration
+    - pinfu-challenge.firewalld-config
     - pinfu-challenge.apply-jst
 
 - hosts:
@@ -34,6 +35,7 @@
   roles:
     - pinfu-challenge.account
     - pinfu-challenge.sshd-configuration
+    - pinfu-challenge.firewalld-config
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
     - pinfu-challenge.nginx

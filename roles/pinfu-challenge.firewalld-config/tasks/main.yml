@@ -1,0 +1,8 @@
+- name: firewalld config
+  firewalld:
+    port: "{{ item.port }}"
+    permanent: true
+    state: enabled
+    immediate: true
+    zone: "{{ item.zone }}"
+  with_items: "{{ firewall_open_ports }}"

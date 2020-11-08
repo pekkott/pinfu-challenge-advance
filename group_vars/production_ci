@@ -1,0 +1,2 @@
+firewall_open_ports:
+  - { port: "22/tcp", zone: "public" }
