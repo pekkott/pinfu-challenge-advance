@@ -13,6 +13,8 @@ app_name: pinfu-challenge
 
 docker_container_names: []
 
+nginx_static_file_directory: ""
+
 mysql_root_pass : your_root_pass_12345
 mysql_pass: your_pass_12345
 

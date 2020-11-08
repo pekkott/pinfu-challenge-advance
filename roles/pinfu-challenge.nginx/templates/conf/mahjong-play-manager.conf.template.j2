@@ -1,7 +1,8 @@
 server {
   server_name {{ mahjong_play_manager_server_name }};
+  root /var/www/pinfu-challenge;
 
-  location / {
+  location /ws {
     proxy_pass http://mahjong-play-manager:8080;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "Upgrade";
