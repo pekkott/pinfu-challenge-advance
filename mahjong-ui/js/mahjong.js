@@ -115,11 +115,11 @@ class MahjongManager {
     }
 
     setRound(round) {
-        var windTable = {
+        let windTable = {
             1:"東",
             2:"南"
         };
-        var roundTable = {
+        let roundTable = {
             1:"一",
             2:"二",
             3:"三",
@@ -159,7 +159,7 @@ class MahjongManager {
     }
 
     updatePointsByRonInfo(ronInfo) {
-        var points = [];
+        let points = [];
         ronInfo.forEach(function(ron) {
             points.push(ron.point);
         });
@@ -176,7 +176,7 @@ class MahjongManager {
         this.players.forEach(function(player) {
             if (player.canDiscard()) {
                 console.log("discard:" + event.target.value);
-                var discarded = player.discard(event.target.value);
+                let discarded = player.discard(event.target.value);
                 player.updateHands(self);
                 player.disableDiscard();
                 player.showHo();
@@ -281,7 +281,7 @@ class Player {
     }
 
     showHo() {
-        var self = this;
+        let self = this;
         $('.tile-' + self.positionClassName).each(function(item, i) {
             self.showTile(item, self.tilesDiscarded.get(i));
             self.modifyTileLayout(item, i);
@@ -293,7 +293,7 @@ class Player {
     }
 
     showTile(item, tileId) {
-        var imageName = Mahjong.TILE_TYPES[this.toTileType(tileId)];
+        let imageName = Mahjong.TILE_TYPES[this.toTileType(tileId)];
         if (imageName) {
             item.style.setProperty('--url-tile', "url('/mahjong-ui/images/p_" + imageName + '_' + (this.position + 1) + ".gif')");
         } else {
@@ -317,7 +317,7 @@ class Player {
 
     discardOther(discardedTile) {
         if (discardedTile != -1) {
-            var i = this.toOrderedIndex();
+            let i = this.toOrderedIndex();
             this.tilesDiscarded.set(i, discardedTile);
         }
     }
@@ -339,7 +339,7 @@ class PlayerOpposite extends Player {
     }
 
     toOrderedIndex() {
-        var order = this.tilesDiscarded.size;
+        let order = this.tilesDiscarded.size;
 
         return Mahjong.HO_SIZE - 1 - order;
     }
@@ -351,13 +351,13 @@ class PlayerUp extends Player {
     }
 
     toOrderedIndex() {
-        var order = this.tilesDiscarded.size;
+        let order = this.tilesDiscarded.size;
 
         return (order*4 + 3) % Mahjong.HO_SIZE - Math.floor(order/6);
     }
 
     modifyTileLayout(item, i) {
-        var tileTypeClass = this.chooseTileTypeClass(i);
+        let tileTypeClass = this.chooseTileTypeClass(i);
         if (tileTypeClass) {
             item.className = 'tile-' + this.positionClassName + ' tile-horizontal-' + tileTypeClass;
         }
@@ -390,7 +390,7 @@ class PlayerDown extends Player {
     }
 
     toOrderedIndex() {
-        var order = this.tilesDiscarded.size;
+        let order = this.tilesDiscarded.size;
 
         return (Mahjong.HO_SIZE - 1 - ((order + 1) % Mahjong.HO_ROW_SIZE)*Mahjong.HO_COLUMN_SIZE + Math.ceil((order + 1)/Mahjong.HO_ROW_SIZE)) % Mahjong.HO_SIZE;
     }
@@ -410,14 +410,14 @@ class PlayerSelf extends Player {
     }
 
     showHands() {
-        var self = this;
+        let self = this;
         $('.tile-in-hands').each(function(item, i) {
             self.showTile(item, self.hands[i]);
         });
     }
 
     showDrawnTile() {
-        var self = this;
+        let self = this;
         $('#tile-drawn-self').each(function(item) {
             console.log("drawnTile:" + self.drawnTile);
             self.showTile(item, self.drawnTile);
@@ -431,7 +431,7 @@ class PlayerSelf extends Player {
     }
 
     modifyTileLayout(item, i) {
-        var tileTypeClass = this.chooseTileTypeClass(i);
+        let tileTypeClass = this.chooseTileTypeClass(i);
         if (tileTypeClass) {
             item.className = 'tile-' + this.positionClassName + ' tile-vertical-' + tileTypeClass;
         }
@@ -469,8 +469,8 @@ class PlayerSelf extends Player {
 
     discard(tileIndex) {
         if (this.canDiscard()) {
-            var discarded = this.hands.splice(tileIndex, 1)[0];
-            var i = this.toOrderedIndex();
+            let discarded = this.hands.splice(tileIndex, 1)[0];
+            let i = this.toOrderedIndex();
             this.tilesDiscarded.set(i, discarded);
             this.drawnTile = -1;
         }
@@ -479,7 +479,7 @@ class PlayerSelf extends Player {
     discardDrawnTile() {
         if (this.canDiscard()) {
             console.log("discard:" + this.drawnTile);
-            var i = this.toOrderedIndex();
+            let i = this.toOrderedIndex();
             this.tilesDiscarded.set(i, this.drawnTile);
             this.drawnTile = -1;
             this.showDrawnTile();
@@ -607,7 +607,7 @@ class OperationButton {
 
 class WebSocketManager {
     constructor(mahjongManager) {
-        var self = this;
+        let self = this;
         self.mahjongManager = mahjongManager;
         this.messageHandlers = [
             {type: "start", handler: this.receiveStart},
@@ -625,7 +625,7 @@ class WebSocketManager {
             let group_id = params.get('group_id');
             self.conn = new WebSocket("ws://" + document.location.host + "/ws?group_id=" + group_id);
             self.conn.onmessage = function (evt) {
-                var message = JSON.parse(evt.data);
+                let message = JSON.parse(evt.data);
                 self.messageHandlers.forEach(function(item) {
                     if (item.type == message["type"]) {
                         console.log("received message type:" + message["type"]);
@@ -691,7 +691,7 @@ class WebSocketManager {
 
     receiveDrawnRound(mahjongManager, drawnRoundInfo) {
         console.log(drawnRoundInfo);
-        var playerPosition = drawnRoundInfo.discardedTileInfo.playerPosition;
+        let playerPosition = drawnRoundInfo.discardedTileInfo.playerPosition;
         if (playerPosition != 0) {
             mahjongManager.players[playerPosition].discardOther(drawnRoundInfo.discardedTileInfo.discardedTile);
             mahjongManager.players[playerPosition].showHo();

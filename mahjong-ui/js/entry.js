@@ -45,7 +45,7 @@ class StartModal extends Modal {
 
 class WebSocketManager {
     constructor(mahjongManager) {
-        var self = this;
+        let self = this;
         self.mahjongManager = mahjongManager;
         this.messageHandlers = [
             {type: "start", handler: this.receiveStart}
@@ -53,7 +53,7 @@ class WebSocketManager {
         if (window["WebSocket"]) {
             self.conn = new WebSocket("ws://" + document.location.host + "/ws");
             self.conn.onmessage = function (evt) {
-                var message = JSON.parse(evt.data);
+                let message = JSON.parse(evt.data);
                 self.messageHandlers.forEach(function(item) {
                     if (item.type == message["type"]) {
                         console.log("received message type:" + message["type"]);
