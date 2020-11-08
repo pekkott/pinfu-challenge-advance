@@ -177,10 +177,11 @@ class MahjongManager {
             if (player.canDiscard()) {
                 console.log("discard:" + event.target.value);
                 var discarded = player.discard(event.target.value);
-                player.showHo();
                 player.updateHands(self);
-                player.showHands();
                 player.disableDiscard();
+                player.showHo();
+                player.showHands();
+                player.showDrawnTile();
             }
         });
     }
