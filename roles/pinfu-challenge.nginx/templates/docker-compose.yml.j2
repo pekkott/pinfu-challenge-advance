@@ -9,6 +9,7 @@ services:
       - 80
     volumes:
       - /etc/nginx/templates:/etc/nginx/templates
+      - {{ nginx_static_file_directory }}:/var/www/pinfu-challenge
     restart: always
     environment:
          - NGINX_PORT=80
