@@ -12,7 +12,8 @@ import (
 )
 
 const (
-	tileInMountNumber = 136
+	// remove dragon tiles
+	tileInMountNumber = 136 - 3*4
 	tileInDistributionClusterNumber = 4
 	tileInHandNumber = 13
 	tileIdNone = -1
