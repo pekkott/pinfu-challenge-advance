@@ -1,3 +1,5 @@
 # ansible-galaxy
 - src: geerlingguy.docker
   version: 2.8.2
+- src: ansistrano.deploy
+  version: 3.6.0

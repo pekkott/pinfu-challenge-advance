@@ -25,7 +25,7 @@
     left: 319px;
     width: 62px;
     height: 5px;
-    background: url('/mahjong-ui/images/b_8_2.gif');
+    background: url('/images/b_8_2.gif');
     background-size: 62px 5px;
 }
 
@@ -224,7 +224,7 @@
     float: left;
     width: 33px;
     height: 15px;
-    background: url('/mahjong-ui/images/tile_bottom_parts_vertical.gif');
+    background: url('/images/tile_bottom_parts_vertical.gif');
 }
 
 .tile-vertical-place {
@@ -252,7 +252,7 @@
     float: left;
     width: 44px;
     height: 15px;
-    background: url('/mahjong-ui/images/tile_bottom_parts_horizontal.gif');
+    background: url('/images/tile_bottom_parts_horizontal.gif');
 }
 
 .tile-horizontal-place {
@@ -284,67 +284,67 @@
 }
 
 .wind-east-opposite {
-    background: url('/mahjong-ui/images/c_e_3.gif');
+    background: url('/images/c_e_3.gif');
 }
 
 .wind-south-opposite {
-    background: url('/mahjong-ui/images/c_s_3.gif');
+    background: url('/images/c_s_3.gif');
 }
 
 .wind-west-opposite {
-    background: url('/mahjong-ui/images/c_w_3.gif');
+    background: url('/images/c_w_3.gif');
 }
 
 .wind-north-opposite {
-    background: url('/mahjong-ui/images/c_n_3.gif');
+    background: url('/images/c_n_3.gif');
 }
 
 .wind-east-up {
-    background: url('/mahjong-ui/images/c_e_2.gif');
+    background: url('/images/c_e_2.gif');
 }
 
 .wind-south-up {
-    background: url('/mahjong-ui/images/c_s_2.gif');
+    background: url('/images/c_s_2.gif');
 }
 
 .wind-west-up {
-    background: url('/mahjong-ui/images/c_w_2.gif');
+    background: url('/images/c_w_2.gif');
 }
 
 .wind-north-up {
-    background: url('/mahjong-ui/images/c_n_2.gif');
+    background: url('/images/c_n_2.gif');
 }
 
 .wind-east-down {
-    background: url('/mahjong-ui/images/c_e_4.gif');
+    background: url('/images/c_e_4.gif');
 }
 
 .wind-south-down {
-    background: url('/mahjong-ui/images/c_s_4.gif');
+    background: url('/images/c_s_4.gif');
 }
 
 .wind-west-down {
-    background: url('/mahjong-ui/images/c_w_4.gif');
+    background: url('/images/c_w_4.gif');
 }
 
 .wind-north-down {
-    background: url('/mahjong-ui/images/c_n_4.gif');
+    background: url('/images/c_n_4.gif');
 }
 
 .wind-east-self {
-    background: url('/mahjong-ui/images/c_e_1.gif');
+    background: url('/images/c_e_1.gif');
 }
 
 .wind-south-self {
-    background: url('/mahjong-ui/images/c_s_1.gif');
+    background: url('/images/c_s_1.gif');
 }
 
 .wind-west-self {
-    background: url('/mahjong-ui/images/c_w_1.gif');
+    background: url('/images/c_w_1.gif');
 }
 
 .wind-north-self {
-    background: url('/mahjong-ui/images/c_n_1.gif');
+    background: url('/images/c_n_1.gif');
 }
 
 .point {
