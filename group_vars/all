@@ -13,7 +13,6 @@ ansistrano_deploy_to: "/var/www/pinfu-challenge"
 ansistrano_keep_releases: 1
 ansistrano_deploy_via: "rsync"
 ansistrano_git_repo: https://github.com/pekkott/pinfu-challenge-advance.git
-ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.copy-external-images/tasks/main.yml"
 
 app_name: pinfu-challenge
 
