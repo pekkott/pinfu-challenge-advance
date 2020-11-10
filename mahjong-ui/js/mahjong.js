@@ -295,7 +295,7 @@ class Player {
     showTile(item, tileId) {
         let imageName = Mahjong.TILE_TYPES[this.toTileType(tileId)];
         if (imageName) {
-            item.style.setProperty('--url-tile', "url('/mahjong-ui/images/p_" + imageName + '_' + (this.position + 1) + ".gif')");
+            item.style.setProperty('--url-tile', "url('/images/p_" + imageName + '_' + (this.position + 1) + ".gif')");
         } else {
             item.style.setProperty('--url-tile', "");
         }
