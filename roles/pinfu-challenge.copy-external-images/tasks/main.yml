@@ -10,7 +10,7 @@
 - name: copy external images
   copy:
     src: "{{ item }}"
-    dest: "{{ ansistrano_deploy_to }}/current/mahjong-ui/images/*"
+    dest: "{{ ansistrano_deploy_to }}/current/mahjong-ui/images"
     owner: "{{ admin_user.name }}"
     mode: 644
   with_fileglob:
