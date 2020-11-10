@@ -7,6 +7,7 @@ local_info.md
 
 # ansible-galaxy role
 roles/geerlingguy.*
+roles/ansistrano.*
 
 __pycache__/
 *.pyc
