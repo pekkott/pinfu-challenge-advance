@@ -5,7 +5,7 @@
     - ansistrano.deploy
 
 - hosts:
-    - production_ci
+    - production_game
   remote_user: "{{ admin_user.name }}"
   roles:
     - ansistrano.deploy
