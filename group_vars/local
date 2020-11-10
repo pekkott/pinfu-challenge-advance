@@ -2,6 +2,7 @@ admin_user: { uid: 1000, name: vagrant, group: vagrant }
 
 docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "matching-python", "nginx"]
 
-nginx_static_file_directory: "/home/vagrant/pinfu-challenge"
+nginx_static_file_directory: "/home/{{ admin_user.name }}/pinfu-challenge"
 
 mahjong_play_manager_server_name: "{{ groups.local_game[0] }}"
+mahjong_play_manager_source_directory: "/home/{{ admin_user.name }}/pinfu-challenge"
