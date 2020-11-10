@@ -1,0 +1,13 @@
+---
+
+- name: create image directory
+  local_action:
+    module: file
+    path: /usr/share/pinfu-challenge/images
+    state: directory
+  run_once: True
+
+- name: copy external images
+  synchronize:
+    src: /usr/share/pinfu-challenge/images
+    dest: "{{ ansistrano_deploy_to }}/current/mahjong-ui/images"
