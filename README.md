@@ -21,6 +21,7 @@ git clone https://github.com/pekkott/pinfu-challenge-advance.git pinfu-challenge
 yum install -y git ansible
 cd pinfu-challenge
 ansible-galaxy install -p roles -r requirements.yml
+ansible-playbook -i hosts.production deploy.yml --become
 ansible-playbook -i hosts.production provision.yml --become
 ```
 
