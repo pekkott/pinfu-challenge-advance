@@ -2,6 +2,6 @@ admin_user: { uid: 100, name: pinfuchan, group: wheel }
 
 docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "matching-python", "nginx"]
 
-nginx_static_file_directory: "/var/www/pinfu-challenge"
+nginx_static_file_directory: "/var/www/pinfu-challenge/current"
 
 mahjong_play_manager_server_name: "150.95.214.93"

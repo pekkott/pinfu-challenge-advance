@@ -1,6 +1,6 @@
 server {
   server_name {{ mahjong_play_manager_server_name }};
-  root /var/www/pinfu-challenge;
+  root /var/www/pinfu-challenge/mahjong-ui;
 
   location /ws {
     proxy_pass http://mahjong-play-manager:8080;

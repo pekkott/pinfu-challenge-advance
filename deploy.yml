@@ -1,0 +1,11 @@
+- hosts:
+    - local_game
+  remote_user: "{{ admin_user.name }}"
+  roles:
+    - ansistrano.deploy
+
+- hosts:
+    - production_ci
+  remote_user: "{{ admin_user.name }}"
+  roles:
+    - ansistrano.deploy

@@ -3,10 +3,10 @@
         auto,
         auto,
         contain;
-    background-image: url("/mahjong-ui/images/building_ma-jan_jansou.png"),
-        url("/mahjong-ui/images/landmark_hachikou.png"),
-        url("/mahjong-ui/images/landmark_moyai_shibuya.png"),
-        url("/mahjong-ui/images/city_night_yoruno_machi.png");
+    background-image: url("/images/building_ma-jan_jansou.png"),
+        url("/images/landmark_hachikou.png"),
+        url("/images/landmark_moyai_shibuya.png"),
+        url("/images/city_night_yoruno_machi.png");
     background-repeat: no-repeat;
     background-position: bottom center,
         bottom left,
@@ -45,31 +45,31 @@
 }
 
 .title-pi {
-    background: url('/mahjong-ui/images/katakana_57_pi.png');
+    background: url('/images/katakana_57_pi.png');
 }
 
 .title-n {
-    background: url('/mahjong-ui/images/katakana_78_n.png');
+    background: url('/images/katakana_78_n.png');
 }
 
 .title-fu {
-    background: url('/mahjong-ui/images/katakana_48_fu.png');
+    background: url('/images/katakana_48_fu.png');
 }
 
 .title-ti {
-    background: url('/mahjong-ui/images/katakana_32_ti.png');
+    background: url('/images/katakana_32_ti.png');
 }
 
 .title-ya-small {
-    background: url('/mahjong-ui/images/katakana_84_ya_small.png');
+    background: url('/images/katakana_84_ya_small.png');
 }
 
 .title-re {
-    background: url('/mahjong-ui/images/katakana_72_re.png');
+    background: url('/images/katakana_72_re.png');
 }
 
 .title-zi {
-    background: url('/mahjong-ui/images/katakana_27_zi.png');
+    background: url('/images/katakana_27_zi.png');
 }
 
 .start-button > button, .start-button > input {
