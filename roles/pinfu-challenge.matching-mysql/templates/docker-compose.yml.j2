@@ -4,7 +4,7 @@ services:
   matching-mysql:
     image: matching-mysql:latest
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     volumes:
       - "/home/{{ admin_user.name }}/pinfu-challenge/docker-images/matching-mysql/data:/var/lib/mysql"
     command:

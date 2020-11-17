@@ -1,5 +1,8 @@
 admin_user: { uid: 1000, name: vagrant, group: vagrant }
 
-docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "matching-python"]
+docker_container_names: ["mahjong", "mahjong-play-manager", "matching-mysql", "matching-python", "nginx"]
 
-hands_caluculation_server_ip_address: "{{ groups.local_game[0] }}"
+nginx_static_file_directory: "/home/{{ admin_user.name }}/pinfu-challenge"
+
+mahjong_play_manager_server_name: "{{ groups.local_game[0] }}"
+mahjong_play_manager_source_directory: "/home/{{ admin_user.name }}/pinfu-challenge"

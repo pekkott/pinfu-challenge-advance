@@ -1,4 +1,4 @@
 ---
 
 - name: init database
-  command: docker run --rm -v /home/{{ admin_user.name }}/pinfu-challenge:/pinfu-challenge -it matching-python:latest  python /pinfu-challenge/matching/init.py
+  command: docker run --rm -v /home/{{ admin_user.name }}/pinfu-challenge:/pinfu-challenge -it matching-python:latest  python /pinfu-challenge/app/init.py

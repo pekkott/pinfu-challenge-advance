@@ -28,6 +28,7 @@ type Client struct {
 	hub *Hub
 	conn *websocket.Conn
 	send chan []byte
+	groupId string
 	playerId int
 }
 
@@ -212,15 +213,24 @@ func (o *Operator) isResult() bool {
 }
 
 // serveWs handles websocket requests from the peer.
-func serveWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
+func serveWs(hubManager *HubManager, w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
 		return
 	}
 	log.Println("serveWs")
+
+	groupId := r.FormValue("group_id")
+	hub, exists := hubManager.getHub(groupId)
+	if !exists {
+		hub = hubManager.createHub(groupId)
+		defer hub.run()
+	}
+	log.Println(groupId)
+
 	client := &Client{hub: hub, conn: conn, send: make(chan []byte, 256), playerId: hub.mahjongPlayManager.newPlayerNumber()}
-	client.hub.register <- client
+	hub.setClient(client)
 	if hub.mahjongPlayManager.isReady() {
 		hub.mahjongPlayManager.InitRound()
 		hub.mahjongPlayManager.SendMessageStart()

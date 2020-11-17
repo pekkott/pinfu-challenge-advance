@@ -4,11 +4,11 @@ services:
   mahjong-play-manager:
     image: mahjong-play-manager:latest
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     expose:
       - 8080
     volumes:
-      - "/home/{{ admin_user.name }}/pinfu-challenge:/var/www"
+      - "{{ mahjong_play_manager_source_directory }}:/var/www"
     command:
       /bin/sh -c "cd /var/www/mahjong-play-manager; go run *.go"
     environment:

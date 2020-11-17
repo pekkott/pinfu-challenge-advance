@@ -1,0 +1,16 @@
+---
+
+- name: create conf directory
+  file:
+    path: /etc/nginx/templates
+    state: directory
+
+- name: copy a conf file
+  template:
+    src=conf/mahjong-play-manager.conf.template.j2
+    dest=/etc/nginx/templates/mahjong-play-manager.conf.template
+
+- name: copy docker-compose.yml
+  template:
+    src=docker-compose.yml.j2
+    dest="{{ working_directory }}/docker-compose-nginx.yml"

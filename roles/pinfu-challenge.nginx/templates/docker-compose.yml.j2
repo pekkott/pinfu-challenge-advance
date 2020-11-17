@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  web:
+    image: nginx:1.19.4-alpine
+    ports:
+      - "80:80"
+    expose:
+      - 80
+    volumes:
+      - /etc/nginx/templates:/etc/nginx/templates
+      - {{ nginx_static_file_directory }}:/var/www/pinfu-challenge
+    restart: always
+    environment:
+         - NGINX_PORT=80

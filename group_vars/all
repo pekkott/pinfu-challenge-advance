@@ -1,6 +1,7 @@
 admin_user: { uid: 100, name: pinfuchan, group: wheel }
 working_directory: "/home/{{ admin_user.name }}"
 ssh_permit_root_login: False
+firewall_open_ports: []
 
 system_accounts:
   - "{{ admin_user }}"
@@ -8,13 +9,23 @@ system_accounts:
 docker_users:
   - "{{ admin_user.name }}"
 
+ansistrano_deploy_to: "/var/www/pinfu-challenge"
+ansistrano_keep_releases: 1
+ansistrano_deploy_via: "rsync"
+ansistrano_git_repo: https://github.com/pekkott/pinfu-challenge-advance.git
+ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.copy-external-images/tasks/main.yml"
+
 app_name: pinfu-challenge
 
 docker_container_names: []
 
+nginx_static_file_directory: ""
+
 mysql_root_pass : your_root_pass_12345
 mysql_pass: your_pass_12345
 
+mahjong_play_manager_server_name: ""
+mahjong_play_manager_source_directory: ""
 
-hands_caluculation_server_ip_address: ""
+hands_caluculation_server_ip_address: mahjong
 hands_caluculation_server_port: 8000

@@ -4,20 +4,42 @@
 package main
 import "log"
 
+type HubManager struct {
+	hubs map[string]*Hub
+}
+
+func newHubManager() *HubManager {
+	return &HubManager{
+		hubs: make(map[string]*Hub),
+	}
+}
+
+func (hubManager *HubManager) createHub(groupId string) *Hub {
+	m := MahjongPlayManager{}
+	m.Init()
+	hubManager.hubs[groupId] = newHub(groupId, &m)
+	return hubManager.hubs[groupId]
+}
+
+func (hubManager *HubManager) getHub(groupId string) (*Hub, bool) {
+	hub, exists := hubManager.hubs[groupId]
+	return hub, exists
+}
+
 type Hub struct {
 	clients map[*Client]bool
 	broadcast chan []byte
-	register chan *Client
 	unregister chan *Client
+	groupId string
 	mahjongPlayManager *MahjongPlayManager
 }
 
-func newHub(m *MahjongPlayManager) *Hub {
+func newHub(groupId string, m *MahjongPlayManager) *Hub {
 	return &Hub{
 		broadcast:  make(chan []byte),
-		register:   make(chan *Client),
 		unregister: make(chan *Client),
 		clients:    make(map[*Client]bool),
+                groupId:    groupId,
 		mahjongPlayManager:    m,
 	}
 }
@@ -25,8 +47,6 @@ func newHub(m *MahjongPlayManager) *Hub {
 func (h *Hub) run() {
 	for {
 		select {
-		case client := <-h.register:
-			h.clients[client] = true
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
@@ -46,4 +66,8 @@ func (h *Hub) run() {
 			}
 		}
 	}
+}
+
+func (h *Hub) setClient(client *Client) {
+	h.clients[client] = true
 }

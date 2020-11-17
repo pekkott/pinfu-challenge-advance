@@ -1,0 +1,22 @@
+---
+
+- name: create image directory
+  local_action:
+    module: file
+    path: /usr/share/pinfu-challenge/images
+    state: directory
+  run_once: True
+
+- name: copy external images
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansistrano_deploy_to }}/current/mahjong-ui/images"
+    owner: "{{ admin_user.name }}"
+    mode: 644
+  with_fileglob:
+    - /usr/share/pinfu-challenge/images/*
+
+- name: restart nginx container
+  command: /usr/local/bin/docker-compose -f docker-compose-nginx.yml restart
+  args:
+    chdir: "{{ working_directory }}"

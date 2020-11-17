@@ -1,0 +1,133 @@
+.bg {
+    background-size: auto,
+        auto,
+        auto,
+        contain;
+    background-image: url("/images/building_ma-jan_jansou.png"),
+        url("/images/landmark_hachikou.png"),
+        url("/images/landmark_moyai_shibuya.png"),
+        url("/images/city_night_yoruno_machi.png");
+    background-repeat: no-repeat;
+    background-position: bottom center,
+        bottom left,
+        bottom right,
+        bottom center;
+}
+
+.title {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.title > ul > li {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    float: left;
+    width: 10%;
+    height: 20%;
+    list-style: none;
+    background-repeat: no-repeat;
+}
+
+.title-small {
+    top: 30px;
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.cb {
+    float: left;
+}
+
+.landmark {
+    float: none;
+}
+
+.title-pi {
+    background: url('/images/katakana_57_pi.png');
+}
+
+.title-n {
+    background: url('/images/katakana_78_n.png');
+}
+
+.title-fu {
+    background: url('/images/katakana_48_fu.png');
+}
+
+.title-ti {
+    background: url('/images/katakana_32_ti.png');
+}
+
+.title-ya-small {
+    background: url('/images/katakana_84_ya_small.png');
+}
+
+.title-re {
+    background: url('/images/katakana_72_re.png');
+}
+
+.title-zi {
+    background: url('/images/katakana_27_zi.png');
+}
+
+.start-button > button, .start-button > input {
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.start-button > button {
+    font-size: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.start-button > input {
+    font-size: 16px;
+    top: 56%;
+}
+
+#start-free {
+    top: 45%;
+}
+
+#start-set {
+    top: 51%;
+}
+
+.modal-area {
+    visibility: hidden;
+    opacity : 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 35%;
+    padding: 10px 40px;
+    background-color: Ivory;
+    border: 3px solid DimGray;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.show-modal {
+    visibility: visible;
+    opacity : 1;
+}

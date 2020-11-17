@@ -11,6 +11,7 @@
   roles:
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
+    - pinfu-challenge.nginx
     - pinfu-challenge.docker-build-image
     - pinfu-challenge.mahjong
     - pinfu-challenge.mahjong-play-manager
@@ -25,6 +26,7 @@
   connection: local
   roles:
     - pinfu-challenge.sshd-configuration
+    - pinfu-challenge.firewalld-config
     - pinfu-challenge.apply-jst
 
 - hosts:
@@ -33,9 +35,14 @@
   roles:
     - pinfu-challenge.account
     - pinfu-challenge.sshd-configuration
+    - pinfu-challenge.firewalld-config
     - pinfu-challenge.apply-jst
     - geerlingguy.docker
+    - pinfu-challenge.nginx
     - pinfu-challenge.docker-build-image
     - pinfu-challenge.mahjong
     - pinfu-challenge.mahjong-play-manager
+    - pinfu-challenge.matching-mysql
+    - pinfu-challenge.matching-python
     - pinfu-challenge.docker-compose
+    - pinfu-challenge.matching-init-db
