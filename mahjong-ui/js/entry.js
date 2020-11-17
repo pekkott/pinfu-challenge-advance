@@ -70,3 +70,7 @@ class WebSocketManager {
         mahjongManager.initRound(playInfo);
     }
 }
+
+window.onload = function() {
+    new EntryManager();
+}
