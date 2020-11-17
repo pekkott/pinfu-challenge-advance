@@ -609,6 +609,7 @@ class WebSocketManager {
     constructor(mahjongManager) {
         let self = this;
         self.mahjongManager = mahjongManager;
+        mahjongManager.webSocketManager = this;
         this.messageHandlers = [
             {type: "start", handler: this.receiveStart},
             {type: "discard", handler: this.receiveDiscard},
@@ -638,11 +639,6 @@ class WebSocketManager {
         $('#tile-drawn-self').on('click', (event) => this.sendDiscard(event));
         $('#ron').on('click', (event) => this.sendRon(event, mahjongManager));
         $('#skip').on('click', (event) => this.sendSkip(event, mahjongManager));
-        $('#debug-start').on('click', (event) => this.debugStart(event));
-        $('#debug-discard-tile').on('click', (event) => this.debugDiscardTile(event));
-        $('#debug-ron').on('click', (event) => this.debugRon(event));
-        $('#debug-next').on('click', (event) => this.debugNext(event));
-        $('#debug-result').on('click', (event) => this.debugResult(event));
     }
 
     receiveStart(mahjongManager, playInfo) {
@@ -731,24 +727,11 @@ class WebSocketManager {
     sendNext() {
         this.conn.send(JSON.stringify({operation: "next", target: -1}));
     }
-
-    debugDiscardTile(event) {
-        this.conn.send(JSON.stringify({operation: "discard", target: -1}));
-    }
-
-    debugRon(event) {
-        this.conn.send(JSON.stringify({operation: "ron", target: -1}));
-    }
-
-    debugStart(event) {
-        this.conn.send(JSON.stringify({operation: "start", target: event.target.value}));
-    }
-
-    debugNext(event) {
-        this.conn.send(JSON.stringify({operation: "next", target: event.target.value}));
-    }
-
-    debugResult(event) {
-        this.conn.send(JSON.stringify({operation: "result", target: event.target.value}));
-    }
 }
+
+var mahjongManager;
+
+window.addEventListener("load", function() {
+    mahjongManager = new MahjongManager();
+    mahjongManager.showHands();
+});
