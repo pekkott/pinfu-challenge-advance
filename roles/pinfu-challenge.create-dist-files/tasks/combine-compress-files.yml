@@ -1,0 +1,47 @@
+---
+
+- name: remove debug code
+  local_action:
+    module: lineinfile
+    path: "{{ item }}"
+    state: absent
+    regexp: 'debug.+'
+  with_fileglob:
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/html/*"
+
+- name: remove precede whitespaces
+  local_action:
+    module: replace
+    path: "{{ item }}"
+    regexp: '^\s+'
+    replace: ''
+    backup: no
+  with_fileglob:
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/css/*"
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/html/*"
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/js/*"
+
+- name: remove new lines
+  local_action:
+    module: replace
+    path: "{{ item }}"
+    regexp: '\n'
+    replace: ''
+    backup: no
+  with_fileglob:
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/css/*"
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/html/*"
+    - "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui/js/*"
+
+- name: combine files
+  delegate_to: localhost
+  script: ../files/combine-files.py "{{ working_directory }}/{{ app_name }}/dist"
+  args:
+    executable: python
+
+- name: remove dist directory
+  local_action:
+    module: file
+    path: "{{ working_directory }}/{{ app_name }}/dist"
+    state: absent
+  run_once: True

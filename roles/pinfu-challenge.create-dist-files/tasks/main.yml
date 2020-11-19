@@ -1,0 +1,5 @@
+---
+
+- include_tasks: copy-assets.yml
+
+- include_tasks: combine-compress-files.yml

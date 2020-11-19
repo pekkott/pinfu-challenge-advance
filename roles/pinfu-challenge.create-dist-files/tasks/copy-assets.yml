@@ -1,0 +1,16 @@
+---
+
+- name: create dist directory
+  local_action:
+    module: file
+    path: "{{ nginx_static_file_directory }}/dist/mahjong-ui"
+    owner: "{{ admin_user.name }}"
+    mode: 644
+    state: directory
+  run_once: True
+
+- name: copy asset directory
+  local_action:
+    module: copy
+    src: "{{ working_directory }}/{{ app_name }}/mahjong-ui"
+    dest: "{{ working_directory }}/{{ app_name }}/dist"
