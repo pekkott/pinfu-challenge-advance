@@ -6,6 +6,6 @@
     path: "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui"
     owner: "{{ admin_user.name }}"
     group: "{{ admin_user.name }}"
-    mode: 0744
+    mode: 0755
     state: directory
   run_once: True
