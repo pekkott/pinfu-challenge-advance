@@ -13,7 +13,7 @@ def extract_js_files(file):
 
     return extracted_files
 
-def combine_js_files(file):
+def combine_js_files(js_dir, file):
     extracted_files = extract_js_files(file)
     size = len(extracted_files)
     if size > 1:
@@ -37,7 +37,7 @@ html_dir = asset_dir + 'html/'
 js_dir = asset_dir + 'js/'
 
 for file in glob.glob(html_dir + '*'):
-    extracted_files = combine_js_files(file)
+    extracted_files = combine_js_files(js_dir, file)
     print(extracted_files)
     for extracted_file in extracted_files:
         with open(file, "r") as f:

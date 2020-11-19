@@ -1,0 +1,10 @@
+---
+
+- name: create dist directory
+  local_action:
+    module: file
+    path: "{{ working_directory }}/{{ app_name }}/dist/mahjong-ui"
+    owner: "{{ admin_user.name }}"
+    mode: 644
+    state: directory
+  run_once: True

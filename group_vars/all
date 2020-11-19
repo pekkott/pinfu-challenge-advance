@@ -15,6 +15,7 @@ ansistrano_deploy_via: "rsync"
 ansistrano_git_repo: https://github.com/pekkott/pinfu-challenge-advance.git
 ansistrano_before_update_code_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.create-dist-files/tasks/main.yml"
 ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.copy-external-images/tasks/main.yml"
+ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.create-dist-files/tasks/cleanup.yml"
 
 app_name: pinfu-challenge
 
