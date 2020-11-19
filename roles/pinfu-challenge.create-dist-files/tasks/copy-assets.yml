@@ -1,0 +1,7 @@
+---
+
+- name: copy asset directory
+  local_action:
+    module: copy
+    src: "{{ working_directory }}/{{ app_name }}/mahjong-ui"
+    dest: "{{ working_directory }}/{{ app_name }}/dist"

@@ -1,0 +1,8 @@
+---
+
+- name: remove dist directory
+  local_action:
+    module: file
+    path: "{{ working_directory }}/{{ app_name }}/dist"
+    state: absent
+  run_once: True
