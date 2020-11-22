@@ -209,12 +209,14 @@
     float: left;
     width: 33px;
     height: 44px;
+    background-size: cover;
 }
 
 .tile-vertical-bottom {
     float: left;
     width: 33px;
     height: 59px;
+    background-size: cover;
 }
 
 .tile-vertical-bottom-parts {
@@ -225,24 +227,28 @@
     width: 33px;
     height: 15px;
     background: url('/images/tile_bottom_parts_vertical.gif');
+    background-size: cover;
 }
 
 .tile-vertical-place {
     float: left;
     width: 33px;
     height: 44px;
+    background-size: cover;
 }
 
 .tile-horizontal-middle {
     float: left;
     width: 44px;
     height: 34px;
+    background-size: cover;
 }
 
 .tile-horizontal-bottom {
     float: left;
     width: 44px;
     height: 49px;
+    background-size: cover;
 }
 
 .tile-horizontal-bottom-parts {
@@ -253,12 +259,14 @@
     width: 44px;
     height: 15px;
     background: url('/images/tile_bottom_parts_horizontal.gif');
+    background-size: cover;
 }
 
 .tile-horizontal-place {
     float: left;
     width: 44px;
     height: 34px;
+    background-size: cover;
 }
 
 .tile-in-hands {
@@ -266,6 +274,7 @@
     width: 33px;
     height: 45px;
     left: -50%;
+    background-size: cover;
 }
 
 .tile-drawn {
@@ -273,16 +282,19 @@
     width: 33px;
     height: 45px;
     left: -600%;
+    background-size: cover;
 }
 
 .wind-vertical > div {
     width: 33px;
     height: 61px;
+    background-size: cover;
 }
 
 .wind-horizontal > div {
     width: 60px;
     height: 37px;
+    background-size: cover;
 }
 
 .wind-east-opposite {
@@ -351,6 +363,89 @@
 
 .point {
     text-align: right;
+}
+
+@media only screen and (max-width: 980px) {
+    #hands-self {
+        width: 643px;
+        height: 66px;
+    }
+
+    #tile-drawn-self {
+        width: 49px;
+        height: 67px;
+    }
+
+    .ho-vertical {
+        width: 295px;
+        height: 225px;
+    }
+
+    .ho-horizontal {
+        width: 264px;
+        height: 328px;
+    }
+
+    .tile-vertical-middle {
+        width: 49px;
+        height: 66px;
+    }
+
+    .tile-vertical-bottom {
+        width: 49px;
+        height: 88px;
+    }
+
+    .tile-vertical-bottom-parts {
+        width: 49px;
+        height: 22px;
+    }
+
+
+    .tile-vertical-place {
+        width: 49px;
+        height: 66px;
+    }
+
+    .tile-horizontal-middle {
+        width: 66px;
+        height: 51px;
+    }
+
+    .tile-horizontal-bottom {
+        width: 66px;
+        height: 73px;
+    }
+
+    .tile-horizontal-bottom-parts {
+        width: 66px;
+        height: 22px;
+    }
+
+    .tile-horizontal-place {
+        width: 66px;
+        height: 51px;
+    }
+
+    .tile-in-hands {
+        width: 49px;
+        height: 67px;
+    }
+
+    .tile-drawn {
+        width: 49px;
+        height: 67px;
+    }
+
+    .wind-vertical > div {
+        width: 49px;
+        height: 91px;
+    }
+
+    .wind-horizontal > div {
+        width: 90px;
+        height: 55px;
+    }
 }
 
 .modal-area {
