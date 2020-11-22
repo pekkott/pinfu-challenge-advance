@@ -6,23 +6,23 @@
     position: absolute;
     background-color: DarkSeaGreen;
     border: 1px solid LightBlue;
-    width: 698px;
-    height: 764px;
-    top: 0px;
-    left: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
 }
 
 #round {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 1%;
+    left: 1%;
     font-size: 20pt;
 }
 
 #sub-round {
     position: absolute;
-    top: 350px;
-    left: 319px;
+    top: 46%;
+    left: 46%;
     width: 62px;
     height: 5px;
     background: url('/images/b_8_2.gif');
@@ -36,111 +36,111 @@
 
 #ho-opposite {
     position: absolute;
-    top: 40px;
-    left: 250px;
+    top: 5%;
+    left: 50%;
 }
 
 #ho-up {
     position: absolute;
-    top: 255px;
-    left: 40px;
+    top: 33%;
+    left: 50%;
 }
 
 #ho-down {
     position: absolute;
-    top: 255px;
-    left: 482px;
+    top: 33%;
+    left: 50%;
 }
 
 #ho-self {
     position: absolute;
-    top: 493px;
-    left: 250px;
+    top: 65%;
+    left: 50%;
 }
 
 #wind-opposite {
     position: absolute;
-    top: 251px;
-    left: 319px;
+    top: 33%;
+    left: 46%;
 }
 
 #wind-up {
     position: absolute;
-    top: 327px;
-    left: 236px;
+    top: 43%;
+    left: 34%;
 }
 
 #wind-down {
     position: absolute;
-    top: 327px;
-    left: 429px;
+    top: 43%;
+    left: 61%;
 }
 
 #wind-self {
     position: absolute;
-    top: 436px;
-    left: 319px;
+    top: 57%;
+    left: 46%;
 }
 
 #point-opposite {
     position: absolute;
-    width: 40px;
-    top: 279px;
-    left: 329px;
+    width: 6%;
+    top: 37%;
+    left: 47%;
 }
 
 #point-up {
     position: absolute;
-    width: 40px;
-    top: 332px;
-    left: 276px;
+    width: 6%;
+    top: 43%;
+    left: 40%;
 }
 
 #point-down {
     position: absolute;
-    width: 40px;
-    top: 332px;
-    left: 381px;
+    width: 6%;
+    top: 43%;
+    left: 55%;
 }
 
 #point-self {
     position: absolute;
-    width: 40px;
-    top: 399px;
-    left: 329px;
+    width: 6%;
+    top: 52%;
+    left: 47%;
 }
 
 #hands-self {
-    position: absolute;
+    position: relative;
     width: 429px;
     height: 44px;
-    top: 704px;
-    left: 131px;
+    top: 92%;
+    left: 50%;
+    float: left;
 }
 
 #tile-drawn-self {
-    position: absolute;
+    position: relative;
     width: 33px;
     height: 45px;
-    top: 704px;
-    left: 576px;
-    margin: 0px;
-    padding: 0px;
+    top: 92%;
+    left: 50%;
+    float: left;
 }
 
 #operation > button {
     position: absolute;
-    width: 60px;
-    height: 30px;
-    left: 576px;
+    width: 9%;
+    height: 4%;
+    left: 83%;
 }
 
 #ron {
-    top: 654px;
+    top: 86%;
 }
 
 #skip {
-    top: 594px;
+    top: 78%;
 }
 
 .display-none {
@@ -148,17 +148,15 @@
 }
 
 .hands-row > ul {
-    margin: 0px;
-    padding: 0px;
+    margin: 0%;
+    padding: 0%;
     list-style: none;
 }
 
 .hands-row > ul > li {
-    margin: 0px;
-    padding: 0px;
+    margin: 0%;
+    padding: 0%;
     position: relative;
-    top: 0px;
-    left: 0px;
 }
 
 .ho-vertical {
@@ -172,33 +170,35 @@
 }
 
 .tile-row > ul {
-    margin: 0px;
-    padding: 0px;
+    margin: 0%;
+    padding: 0%;
     list-style: none;
 }
 
 .tile-row > ul > li {
-    margin: 0px;
-    padding: 0px;
+    margin: 0%;
+    padding: 0%;
     position: relative;
-    top: 0px;
-    left: 0px;
 }
 
 .tile-opposite {
     background: var(--url-tile);
+    left: -50%;
 }
 
 .tile-up {
     background: var(--url-tile);
+    left: -200%;
 }
 
 .tile-down {
     background: var(--url-tile);
+    left: 100%;
 }
 
 .tile-self {
     background: var(--url-tile);
+    left: -50%;
 }
 
 .tile-hand {
@@ -265,12 +265,14 @@
     float: left;
     width: 33px;
     height: 45px;
+    left: -50%;
 }
 
 .tile-drawn {
     float: left;
     width: 33px;
     height: 45px;
+    left: -600%;
 }
 
 .wind-vertical > div {
@@ -420,25 +422,26 @@
     position: absolute;
     width: 60px;
     height: 30px;
-    left: 776px;
+    left: 80%;
+    z-index: 1;
 }
 
 #debug-start {
-    top: 594px;
+    top: 65%;
 }
 
 #debug-discard-tile {
-    top: 554px;
+    top: 70%;
 }
 
 #debug-ron {
-    top: 514px;
+    top: 75%;
 }
 
 #debug-next {
-    top: 474px;
+    top: 80%;
 }
 
 #debug-result {
-    top: 434px;
+    top: 85%;
 }
