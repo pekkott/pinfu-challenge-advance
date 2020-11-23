@@ -9,7 +9,7 @@
   template:
     src=conf/{{ item }}.conf.template.j2
     dest=/etc/nginx/templates/{{ item }}.conf.template
-  items:
+  with_items:
     - default
     - mahjong-play-manager
 
