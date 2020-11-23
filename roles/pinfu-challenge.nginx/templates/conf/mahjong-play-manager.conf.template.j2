@@ -1,11 +1,21 @@
 server {
-  server_name {{ mahjong_play_manager_server_name }};
-  root /var/www/pinfu-challenge/mahjong-ui;
+    server_tokens off;
+    server_name {{ mahjong_play_manager_server_name }};
+    root /var/www/pinfu-challenge/mahjong-ui;
 
-  location /ws {
-    proxy_pass http://mahjong-play-manager:8080;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "Upgrade";
-    proxy_set_header Host $host;
-  }
+    location / {
+        index /html/entry.html;
+    }
+
+    location ~ \.(js|css|png|gif)$ {
+        access_log off;
+        expires 1d;
+    }
+
+    location /ws {
+        proxy_pass http://mahjong-play-manager:8080;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
 }
