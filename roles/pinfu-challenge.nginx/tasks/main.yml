@@ -7,8 +7,11 @@
 
 - name: copy a conf file
   template:
-    src=conf/mahjong-play-manager.conf.template.j2
-    dest=/etc/nginx/templates/mahjong-play-manager.conf.template
+    src=conf/{{ item }}.conf.template.j2
+    dest=/etc/nginx/templates/{{ item }}.conf.template
+  items:
+    - default
+    - mahjong-play-manager
 
 - name: copy docker-compose.yml
   template:
