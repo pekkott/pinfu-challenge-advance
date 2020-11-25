@@ -106,6 +106,7 @@ class MahjongManager {
         mahjongManager.setWinds(playInfo.winds);
         mahjongManager.updatePoints(playInfo.points);
         mahjongManager.updatePlayerHands(playInfo.playerInfo);
+        mahjongManager.showPlayers();
         mahjongManager.showPoint();
         mahjongManager.showWind();
         mahjongManager.showHands();
@@ -219,6 +220,12 @@ class MahjongManager {
         });
     }
 
+    showPlayers() {
+        this.players.forEach(function(player) {
+            player.showPlayer();
+        });
+    }
+
     showPoint() {
         this.players.forEach(function(player) {
             player.point.show();
@@ -271,6 +278,13 @@ class Player {
     }
 
     updateHands() {
+    }
+
+    showPlayer() {
+        self = this;
+        $('.player-' + self.positionClassName + '-image').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + self.playerId + ".png')");
+        });
     }
 
     showHands() {

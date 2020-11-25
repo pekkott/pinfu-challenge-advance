@@ -1,4 +1,5 @@
 :root {
+    --url-player: url("");
     --url-tile: url("");
 }
 
@@ -60,54 +61,26 @@
 
 #wind-opposite {
     position: absolute;
-    top: 33%;
+    top: 31%;
     left: 46%;
 }
 
 #wind-up {
     position: absolute;
     top: 43%;
-    left: 34%;
+    left: 33%;
 }
 
 #wind-down {
     position: absolute;
     top: 43%;
-    left: 61%;
+    left: 62%;
 }
 
 #wind-self {
     position: absolute;
-    top: 57%;
+    top: 59%;
     left: 46%;
-}
-
-#point-opposite {
-    position: absolute;
-    width: 6%;
-    top: 37%;
-    left: 47%;
-}
-
-#point-up {
-    position: absolute;
-    width: 6%;
-    top: 43%;
-    left: 40%;
-}
-
-#point-down {
-    position: absolute;
-    width: 6%;
-    top: 43%;
-    left: 55%;
-}
-
-#point-self {
-    position: absolute;
-    width: 6%;
-    top: 52%;
-    left: 47%;
 }
 
 #hands-self {
@@ -362,10 +335,70 @@
 }
 
 .point {
+    margin: 0%;
+    transform: translate(100%, -150%);
     text-align: right;
 }
 
+.player-info > div {
+    position: absolute;
+}
+
+.player {
+    margin: 0%;
+    width: 31px;
+    height: 42px;
+    display: inline-block;
+}
+
+.player-self {
+    top: 51%;
+    left: 44%;
+}
+
+.player-self-image {
+    background: var(--url-player);
+    background-size: contain;
+}
+
+.player-down {
+    top: 50%;
+    left: 58%;
+    transform: rotate(270deg);
+}
+
+.player-down-image {
+    background: var(--url-player);
+    background-size: contain;
+}
+
+.player-opposite {
+    top: 35%;
+    left: 50%;
+    transform: rotate(180deg);
+}
+
+.player-opposite-image {
+    background: var(--url-player);
+    background-size: contain;
+}
+
+.player-up {
+    top: 39%;
+    left: 37%;
+    transform: rotate(90deg);
+}
+
+.player-up-image {
+    background: var(--url-player);
+    background-size: contain;
+}
+
 @media only screen and (max-width: 980px) {
+    #round {
+        top: 20%;
+    }
+
     #hands-self {
         width: 643px;
         height: 66px;
@@ -446,6 +479,39 @@
         width: 90px;
         height: 55px;
     }
+
+    .player {
+        width: 46px;
+        height: 61px;
+    }
+
+    .player-self {
+        top: 0%;
+        left: 0%;    
+    }
+
+    .player-down {
+        top: 0%;
+        left: 50%;
+        transform: rotate(0deg);
+    }
+
+    .player-opposite {
+        top: 10%;
+        left: 0%;
+        transform: rotate(0deg);
+    }
+
+    .player-up {
+        top: 10%;
+        left: 50%;
+        transform: rotate(0deg);
+    }
+
+    .point {
+        font-size: 25px;
+        transform: translate(100%, -140%);
+    }
 }
 
 .modal-area {
@@ -463,7 +529,7 @@
     position: absolute;
     top: 47%;
     left: 50%;
-    transform:translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 35%;
     padding: 10px 40px;
     background-color: Ivory;
