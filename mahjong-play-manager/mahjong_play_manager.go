@@ -71,6 +71,7 @@ type CanRonInfo struct {
 }
 
 type RonInfo struct {
+	PlayerId int `json:"playerId"`
 	Point int `json:"point"`
 	PointDiff int `json:"pointDiff"`
 }
@@ -87,6 +88,7 @@ type Round struct {
 }
 
 type Result struct {
+	PlayerId int `json:"playerId"`
 	Point int `json:"point"`
 	Order int `json:"order"`
 }
@@ -271,7 +273,7 @@ func (m *MahjongPlayManager) PinfuQuery(hands []int, discardedTile, wind int, se
 func (m *MahjongPlayManager) CalculateRonInfo(playerId int) []*RonInfo {
 	r := make([]*RonInfo, playerNumber)
 	for i, p := range m.playerInfos {
-		r[i] = &RonInfo{p.Point, 0}
+		r[i] = &RonInfo{p.PlayerId, p.Point, 0}
 	}
 	cost := m.playerInfos[playerId].PinfuInfo.Cost + costBySubRound*m.round.SubRound
 	r[playerId].Update(cost)
@@ -322,11 +324,11 @@ func (m *MahjongPlayManager) CalculateResult() []*Result {
 		}
 
 		for i, p := range points {
-			r[p.playerId] = &Result{p.point + umaByOrder[i], i + 1}
+			r[p.playerId] = &Result{p.playerId, p.point + umaByOrder[i], i + 1}
 		}
 	} else {
 		for i := range points {
-			r[i] = &Result{int(math.Floor(float64((points[i].point + 400)/1000))), 0}
+			r[i] = &Result{points[i].playerId, int(math.Floor(float64((points[i].point + 400)/1000))), 0}
 		}
 	}
 	return r
@@ -394,7 +396,7 @@ func (m *MahjongPlayManager) SendMessageSkip() {
 func (m *MahjongPlayManager) SendMessageDrawnRound(discardedTile int) {
 	r := make([]*RonInfo, playerNumber)
 	for i, p := range m.playerInfos {
-		r[i] = &RonInfo{p.Point, 0}
+		r[i] = &RonInfo{p.PlayerId, p.Point, 0}
 	}
 	for i := range m.sendMessages {
 		m.sendMessages[i] = &SendMessage{"drawnRound", &DrawnRoundInfo{r, &DiscardedTileInfo{(playerNumber - m.playerIdInTurn + i) % playerNumber, discardedTile, false}}}

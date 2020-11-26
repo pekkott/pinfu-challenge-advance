@@ -37,26 +37,26 @@
 
 #ho-opposite {
     position: absolute;
-    top: 5%;
-    left: 50%;
+    top: 7%;
+    left: 40%;
 }
 
 #ho-up {
     position: absolute;
     top: 33%;
-    left: 50%;
+    left: 18%;
 }
 
 #ho-down {
     position: absolute;
     top: 33%;
-    left: 50%;
+    left: 67%;
 }
 
 #ho-self {
     position: absolute;
     top: 65%;
-    left: 50%;
+    left: 40%;
 }
 
 #wind-opposite {
@@ -156,22 +156,18 @@
 
 .tile-opposite {
     background: var(--url-tile);
-    left: -50%;
 }
 
 .tile-up {
     background: var(--url-tile);
-    left: -200%;
 }
 
 .tile-down {
     background: var(--url-tile);
-    left: 100%;
 }
 
 .tile-self {
     background: var(--url-tile);
-    left: -50%;
 }
 
 .tile-hand {
@@ -397,6 +393,47 @@
 @media only screen and (max-width: 980px) {
     #round {
         top: 20%;
+        font-size: 50pt;
+    }
+
+    #ho-opposite {
+        top: 36%;
+        left: 35%;
+    }
+
+    #ho-up {
+        top: 52%;
+        left: 6%;
+    }
+
+    #ho-down {
+        top: 52%;
+        left: 67%;
+    }
+
+    #ho-self {
+        top: 71%;
+        left: 35%;
+    }
+
+    #wind-opposite {
+        top: 55%;
+        left: 46%;
+    }
+
+    #wind-up {
+        top: 59%;
+        left: 39%;
+    }
+
+    #wind-down {
+        top: 59%;
+        left: 57%;
+    }
+
+    #wind-self {
+        top: 65%;
+        left: 46%;
     }
 
     #hands-self {
@@ -433,7 +470,6 @@
         width: 49px;
         height: 22px;
     }
-
 
     .tile-vertical-place {
         width: 49px;
@@ -481,8 +517,8 @@
     }
 
     .player {
-        width: 46px;
-        height: 61px;
+        width: 93px;
+        height: 126px;
     }
 
     .player-self {
@@ -509,8 +545,40 @@
     }
 
     .point {
-        font-size: 25px;
+        font-size: 50px;
         transform: translate(100%, -140%);
+    }
+
+    .player-icon > div {
+        position: absolute;
+    }
+
+    .player-icon > div > p {
+        width: 46px;
+        height: 63px;
+    }
+
+    .player-icon-self {
+        top: 64%;
+        left: 40%;
+    }
+
+    .player-icon-down {
+        top: 64%;
+        left: 58%;
+        transform: rotate(270deg);
+    }
+
+    .player-icon-opposite {
+        top: 54%;
+        left: 57%;
+        transform: rotate(180deg);
+    }
+
+    .player-icon-up {
+        top: 54%;
+        left: 39%;
+        transform: rotate(90deg);
     }
 }
 
@@ -553,6 +621,15 @@
 .round-result-header {
     padding-left: 10px;
     text-align: center;
+}
+
+.player-icon-round-result, .player-icon-game-result {
+    position: relative;
+    margin: 0%;
+    width: 31px;
+    height: 42px;
+    background: var(--url-player);
+    background-size: cover;
 }
 
 .player-point {

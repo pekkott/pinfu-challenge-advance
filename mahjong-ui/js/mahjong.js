@@ -574,6 +574,9 @@ class Modal {
 class RoundResultModal extends Modal {
     updatePlayerPoints(ronInfo) {
         console.log(ronInfo);
+        $('.player-icon-round-result').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + ronInfo[i].playerId + ".png')");
+        });
         $('.player-point').each(function(item, i) {
             item.innerHTML = ronInfo[i].point;
         });
@@ -596,6 +599,9 @@ class RoundResultModal extends Modal {
 
 class GameResultModal extends Modal {
     update(result) {
+        $('.player-icon-game-result').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + result[i].playerId + ".png')");
+        });
         $('.result-order').each(function(item, i) {
             item.innerHTML = result[i].order > 0 ? result[i].order : "-";
         });
