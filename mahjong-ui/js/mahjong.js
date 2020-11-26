@@ -106,6 +106,7 @@ class MahjongManager {
         mahjongManager.setWinds(playInfo.winds);
         mahjongManager.updatePoints(playInfo.points);
         mahjongManager.updatePlayerHands(playInfo.playerInfo);
+        mahjongManager.showPlayers();
         mahjongManager.showPoint();
         mahjongManager.showWind();
         mahjongManager.showHands();
@@ -219,6 +220,12 @@ class MahjongManager {
         });
     }
 
+    showPlayers() {
+        this.players.forEach(function(player) {
+            player.showPlayer();
+        });
+    }
+
     showPoint() {
         this.players.forEach(function(player) {
             player.point.show();
@@ -271,6 +278,13 @@ class Player {
     }
 
     updateHands() {
+    }
+
+    showPlayer() {
+        self = this;
+        $('.player-' + self.positionClassName + '-image').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + self.playerId + ".png')");
+        });
     }
 
     showHands() {
@@ -560,6 +574,9 @@ class Modal {
 class RoundResultModal extends Modal {
     updatePlayerPoints(ronInfo) {
         console.log(ronInfo);
+        $('.player-icon-round-result').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + ronInfo[i].playerId + ".png')");
+        });
         $('.player-point').each(function(item, i) {
             item.innerHTML = ronInfo[i].point;
         });
@@ -582,6 +599,9 @@ class RoundResultModal extends Modal {
 
 class GameResultModal extends Modal {
     update(result) {
+        $('.player-icon-game-result').each(function(item, i) {
+            item.style.setProperty('--url-player', "url('/images/player_" + result[i].playerId + ".png')");
+        });
         $('.result-order').each(function(item, i) {
             item.innerHTML = result[i].order > 0 ? result[i].order : "-";
         });
