@@ -1,6 +1,7 @@
 :root {
     --url-player: url("");
     --url-tile: url("");
+    --url-ron: url("");
 }
 
 #table {
@@ -390,6 +391,32 @@
     background-size: contain;
 }
 
+.ron {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: var(--url-ron);
+}
+
+.ron-message {
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    background: url("/images/ron.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ron-player {
+    width: 50%;
+    height: 50%;
+    top: 55%;
+    left: 45%;
+    background: url("/images/ron_0.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 @media only screen and (max-width: 980px) {
     #round {
         top: 20%;
@@ -579,6 +606,14 @@
         top: 54%;
         left: 39%;
         transform: rotate(90deg);
+    }
+
+    .ron-message {
+        top: 75%;
+    }
+
+    .ron-player {
+        top: 75%;
     }
 }
 

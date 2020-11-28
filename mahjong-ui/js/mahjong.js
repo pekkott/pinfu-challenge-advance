@@ -70,6 +70,10 @@ class Mahjong {
         ];
     }
 
+    static get RON_DURATION() {
+        return 1000;
+    }
+
     static get MODAL_DURATION() {
         return 2000;
     }
@@ -84,6 +88,7 @@ class MahjongManager {
             new PlayerOpposite(2),
             new PlayerUp(3)
         ];
+        this.ron = new Ron();
         this.roundRonModal = new RoundResultModal('#modal-round-result');
         this.gameResultModal = new GameResultModal('#modal-game-result');
         this.operationButton = new OperationButton();
@@ -232,14 +237,36 @@ class MahjongManager {
         });
     }
 
+    showRonMessage() {
+        this.ron.showMessage();
+    }
+
+    hideRonMessage() {
+        this.ron.hideMessage();
+    }
+
+    showRonPlayer() {
+        this.ron.showPlayer();
+    }
+
+    hideRonPlayer() {
+        this.ron.hidePlayer();
+    }
+
     showRoundRonModal() {
         this.roundRonModal.showModal("和了");
-        this.roundRonModal.setModalTimeout(this.webSocketManager);
+    }
+
+    closeRoundRonModal() {
+        this.roundRonModal.closeModal();
     }
 
     showRoundDrawnGameModal() {
         this.roundRonModal.showModal("流局");
-        this.roundRonModal.setModalTimeout(this.webSocketManager);
+    }
+
+    closeRoundDrawnGameModal() {
+        this.roundRonModal.closeModal();
     }
 
     showGameResultModal(result) {
@@ -544,6 +571,32 @@ class Point {
     }
 }
 
+class Ron {
+    showMessage() {
+        $('.ron').each(function(item, i) {
+            item.classList.add("ron-message");
+        });
+    }
+
+    hideMessage() {
+        $('.ron').each(function(item, i) {
+            item.classList.remove("ron-message");
+        });
+    }
+
+    showPlayer() {
+        $('.ron').each(function(item, i) {
+            item.classList.add("ron-player");
+        });
+    }
+
+    hidePlayer() {
+        $('.ron').each(function(item, i) {
+            item.classList.remove("ron-player");
+        });
+    }
+}
+
 class Modal {
     constructor(modalId) {
         this.modalId = modalId;
@@ -558,15 +611,6 @@ class Modal {
     closeModal() {
         $(this.modalId).each(function(item, i) {
             item.classList.remove("show-modal");
-        });
-    }
-
-    setModalTimeout(webSocketManager) {
-        $(this.modalId).each(function(item, i) {
-            setTimeout(function() {
-                item.classList.remove("show-modal");
-                webSocketManager.sendNext();
-            }, Mahjong.MODAL_DURATION);
         });
     }
 }
@@ -695,7 +739,27 @@ class WebSocketManager {
     receiveRon(mahjongManager, ronInfo) {
         console.log(ronInfo);
         mahjongManager.updatePlayerPoints(ronInfo);
-        mahjongManager.showRoundRonModal();
+
+        mahjongManager.showRonMessage();
+        setTimeout(function () {
+            mahjongManager.hideRonMessage()
+        }, Mahjong.RON_DURATION);
+
+        setTimeout(function () {
+            mahjongManager.showRonPlayer();
+        }, Mahjong.RON_DURATION);
+        setTimeout(function () {
+            mahjongManager.hideRonPlayer()
+        }, Mahjong.RON_DURATION*2);
+
+        setTimeout(function () {
+            mahjongManager.showRoundRonModal();
+        }, Mahjong.RON_DURATION*2);
+        setTimeout(function () {
+            mahjongManager.closeRoundRonModal();
+            mahjongManager.webSocketManager.sendNext();
+        }, Mahjong.RON_DURATION*2 + Mahjong.MODAL_DURATION);
+
         mahjongManager.updatePointsByRonInfo(ronInfo);
         mahjongManager.showPoint();
     }
@@ -713,7 +777,12 @@ class WebSocketManager {
             mahjongManager.players[playerPosition].showHo();
         }
         mahjongManager.updatePlayerPoints(drawnRoundInfo.ronInfo);
+
         mahjongManager.showRoundDrawnGameModal();
+        setTimeout(function() {
+            mahjongManager.closeRoundRonModal();
+            mahjongManager.webSocketManager.sendNext();
+        }, Mahjong.MODAL_DURATION);
     }
 
     receiveNext(mahjongManager, playInfo) {
