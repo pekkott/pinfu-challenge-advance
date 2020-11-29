@@ -70,14 +70,19 @@ type CanRonInfo struct {
 	CanRon bool `json:"canRon"`
 }
 
-type RonInfo struct {
+type RonPoint struct {
 	PlayerId int `json:"playerId"`
 	Point int `json:"point"`
 	PointDiff int `json:"pointDiff"`
 }
 
+type RonInfo struct {
+	RonPoints []*RonPoint `json:"ronPoints"`
+	RonPlayerId int `json:"ronPlayerId"`
+}
+
 type DrawnRoundInfo struct {
-	RonInfo []*RonInfo `json:"ronInfo"`
+	RonPoints []*RonPoint `json:"ronPoints"`
 	DiscardedTileInfo *DiscardedTileInfo `json:"discardedTileInfo"`
 }
 
@@ -270,10 +275,10 @@ func (m *MahjongPlayManager) PinfuQuery(hands []int, discardedTile, wind int, se
 	return p.Query()
 }
 
-func (m *MahjongPlayManager) CalculateRonInfo(playerId int) []*RonInfo {
-	r := make([]*RonInfo, playerNumber)
+func (m *MahjongPlayManager) CalculateRonPoints(playerId int) []*RonPoint {
+	r := make([]*RonPoint, playerNumber)
 	for i, p := range m.playerInfos {
-		r[i] = &RonInfo{p.PlayerId, p.Point, 0}
+		r[i] = &RonPoint{p.PlayerId, p.Point, 0}
 	}
 	cost := m.playerInfos[playerId].PinfuInfo.Cost + costBySubRound*m.round.SubRound
 	r[playerId].Update(cost)
@@ -281,7 +286,7 @@ func (m *MahjongPlayManager) CalculateRonInfo(playerId int) []*RonInfo {
 	return r
 }
 
-func (m *MahjongPlayManager) UpdatePlayersPoint(r []*RonInfo) {
+func (m *MahjongPlayManager) UpdatePlayersPoint(r []*RonPoint) {
 	for _, p := range m.playerInfos {
 		p.Point = r[p.PlayerId].Point
 	}
@@ -379,9 +384,9 @@ func (m *MahjongPlayManager) SendMessageCanRon() {
 	}
 }
 
-func (m *MahjongPlayManager) SendMessageRon(r []*RonInfo) {
+func (m *MahjongPlayManager) SendMessageRon(r []*RonPoint, playerId int) {
 	for i := range m.sendMessages {
-		m.sendMessages[i] = &SendMessage{"ron", r}
+		m.sendMessages[i] = &SendMessage{"ron", &RonInfo{r, playerId}}
 	}
 }
 
@@ -394,13 +399,13 @@ func (m *MahjongPlayManager) SendMessageSkip() {
 }
 
 func (m *MahjongPlayManager) SendMessageDrawnRound(discardedTile int) {
-	r := make([]*RonInfo, playerNumber)
+	r := make([]*RonPoint, playerNumber)
 	for i, p := range m.playerInfos {
-		r[i] = &RonInfo{p.PlayerId, p.Point, 0}
+		r[i] = &RonPoint{p.PlayerId, p.Point, 0}
 	}
 	for i := range m.sendMessages {
 		m.sendMessages[i] = &SendMessage{"drawnRound", &DrawnRoundInfo{r, &DiscardedTileInfo{(playerNumber - m.playerIdInTurn + i) % playerNumber, discardedTile, false}}}
-	log.Printf("DiscardedTileInfo:%d", (playerNumber - m.playerIdInTurn + i) % playerNumber)
+		log.Printf("DiscardedTileInfo:%d", (playerNumber - m.playerIdInTurn + i) % playerNumber)
 	}
 }
 
@@ -509,7 +514,7 @@ func (r *Round) IsFinalWind() bool {
 	return r.Wind == SOUTH
 }
 
-func (r *RonInfo) Update(cost int) {
+func (r *RonPoint) Update(cost int) {
 	r.Point = r.Point + cost
 	r.PointDiff = cost
 }

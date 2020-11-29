@@ -70,6 +70,10 @@ class Mahjong {
         ];
     }
 
+    static get RON_DURATION() {
+        return 1000;
+    }
+
     static get MODAL_DURATION() {
         return 2000;
     }
@@ -84,6 +88,7 @@ class MahjongManager {
             new PlayerOpposite(2),
             new PlayerUp(3)
         ];
+        this.ron = new Ron();
         this.roundRonModal = new RoundResultModal('#modal-round-result');
         this.gameResultModal = new GameResultModal('#modal-game-result');
         this.operationButton = new OperationButton();
@@ -102,17 +107,17 @@ class MahjongManager {
     }
 
     initRound(playInfo) {
-        mahjongManager.setRound(playInfo.round);
-        mahjongManager.setWinds(playInfo.winds);
-        mahjongManager.updatePoints(playInfo.points);
-        mahjongManager.updatePlayerHands(playInfo.playerInfo);
-        mahjongManager.showPlayers();
-        mahjongManager.showPoint();
-        mahjongManager.showWind();
-        mahjongManager.showHands();
-        mahjongManager.showDrawnTile();
-        mahjongManager.clearHo();
-        mahjongManager.operationButton.hideButton();
+        this.setRound(playInfo.round);
+        this.setWinds(playInfo.winds);
+        this.updatePoints(playInfo.points);
+        this.updatePlayerHands(playInfo.playerInfo);
+        this.showPlayers();
+        this.showPoint();
+        this.showWind();
+        this.showHands();
+        this.showDrawnTile();
+        this.clearHo();
+        this.operationButton.hideButton();
     }
 
     setRound(round) {
@@ -149,8 +154,8 @@ class MahjongManager {
         });
     }
 
-    updatePlayerPoints(ronInfo) {
-        this.roundRonModal.updatePlayerPoints(ronInfo);
+    updatePlayerPoints(ronPoints) {
+        this.roundRonModal.updatePlayerPoints(ronPoints);
     }
 
     updatePoints(points) {
@@ -161,8 +166,8 @@ class MahjongManager {
 
     updatePointsByRonInfo(ronInfo) {
         let points = [];
-        ronInfo.forEach(function(ron) {
-            points.push(ron.point);
+        ronInfo.ronPoints.forEach(function(ronPoint) {
+            points.push(ronPoint.point);
         });
 
         this.updatePoints(points);
@@ -232,14 +237,36 @@ class MahjongManager {
         });
     }
 
+    showRonMessage() {
+        this.ron.showMessage();
+    }
+
+    hideRonMessage() {
+        this.ron.hideMessage();
+    }
+
+    showRonPlayer(playerId) {
+        this.ron.showPlayer(playerId);
+    }
+
+    hideRonPlayer() {
+        this.ron.hidePlayer();
+    }
+
     showRoundRonModal() {
         this.roundRonModal.showModal("和了");
-        this.roundRonModal.setModalTimeout(this.webSocketManager);
+    }
+
+    closeRoundRonModal() {
+        this.roundRonModal.closeModal();
     }
 
     showRoundDrawnGameModal() {
         this.roundRonModal.showModal("流局");
-        this.roundRonModal.setModalTimeout(this.webSocketManager);
+    }
+
+    closeRoundDrawnGameModal() {
+        this.roundRonModal.closeModal();
     }
 
     showGameResultModal(result) {
@@ -544,6 +571,33 @@ class Point {
     }
 }
 
+class Ron {
+    showMessage() {
+        $('.ron').each(function(item, i) {
+            item.classList.add("ron-message");
+        });
+    }
+
+    hideMessage() {
+        $('.ron').each(function(item, i) {
+            item.classList.remove("ron-message");
+        });
+    }
+
+    showPlayer(playerId) {
+        $('.ron').each(function(item, i) {
+            item.style.setProperty('--url-ron', "url('/images/ron_" + playerId + ".png')");
+            item.classList.add("ron-player");
+        });
+    }
+
+    hidePlayer() {
+        $('.ron').each(function(item, i) {
+            item.classList.remove("ron-player");
+        });
+    }
+}
+
 class Modal {
     constructor(modalId) {
         this.modalId = modalId;
@@ -560,31 +614,22 @@ class Modal {
             item.classList.remove("show-modal");
         });
     }
-
-    setModalTimeout(webSocketManager) {
-        $(this.modalId).each(function(item, i) {
-            setTimeout(function() {
-                item.classList.remove("show-modal");
-                webSocketManager.sendNext();
-            }, Mahjong.MODAL_DURATION);
-        });
-    }
 }
 
 class RoundResultModal extends Modal {
-    updatePlayerPoints(ronInfo) {
-        console.log(ronInfo);
+    updatePlayerPoints(ronPoints) {
+        console.log(ronPoints);
         $('.player-icon-round-result').each(function(item, i) {
-            item.style.setProperty('--url-player', "url('/images/player_" + ronInfo[i].playerId + ".png')");
+            item.style.setProperty('--url-player', "url('/images/player_" + ronPoints[i].playerId + ".png')");
         });
         $('.player-point').each(function(item, i) {
-            item.innerHTML = ronInfo[i].point;
+            item.innerHTML = ronPoints[i].point;
         });
         $('.player-point-diff').each(function(item, i) {
-            if (ronInfo[i].pointDiff == 0) {
+            if (ronPoints[i].pointDiff == 0) {
                 item.innerHTML = "";
             } else {
-                item.innerHTML = (ronInfo[i].pointDiff > 0 ? "+" : "") + ronInfo[i].pointDiff;
+                item.innerHTML = (ronPoints[i].pointDiff > 0 ? "+" : "") + ronPoints[i].pointDiff;
             }
         });
     }
@@ -694,8 +739,28 @@ class WebSocketManager {
 
     receiveRon(mahjongManager, ronInfo) {
         console.log(ronInfo);
-        mahjongManager.updatePlayerPoints(ronInfo);
-        mahjongManager.showRoundRonModal();
+        mahjongManager.updatePlayerPoints(ronInfo.ronPoints);
+
+        mahjongManager.showRonMessage();
+        setTimeout(function () {
+            mahjongManager.hideRonMessage()
+        }, Mahjong.RON_DURATION);
+
+        setTimeout(function () {
+            mahjongManager.showRonPlayer(ronInfo.ronPlayerId);
+        }, Mahjong.RON_DURATION);
+        setTimeout(function () {
+            mahjongManager.hideRonPlayer()
+        }, Mahjong.RON_DURATION*2);
+
+        setTimeout(function () {
+            mahjongManager.showRoundRonModal();
+        }, Mahjong.RON_DURATION*2);
+        setTimeout(function () {
+            mahjongManager.closeRoundRonModal();
+            mahjongManager.webSocketManager.sendNext();
+        }, Mahjong.RON_DURATION*2 + Mahjong.MODAL_DURATION);
+
         mahjongManager.updatePointsByRonInfo(ronInfo);
         mahjongManager.showPoint();
     }
@@ -712,8 +777,13 @@ class WebSocketManager {
             mahjongManager.players[playerPosition].discardOther(drawnRoundInfo.discardedTileInfo.discardedTile);
             mahjongManager.players[playerPosition].showHo();
         }
-        mahjongManager.updatePlayerPoints(drawnRoundInfo.ronInfo);
+        mahjongManager.updatePlayerPoints(drawnRoundInfo.ronPoints);
+
         mahjongManager.showRoundDrawnGameModal();
+        setTimeout(function() {
+            mahjongManager.closeRoundRonModal();
+            mahjongManager.webSocketManager.sendNext();
+        }, Mahjong.MODAL_DURATION);
     }
 
     receiveNext(mahjongManager, playInfo) {
@@ -749,7 +819,7 @@ class WebSocketManager {
     }
 }
 
-var mahjongManager;
+let mahjongManager;
 
 window.addEventListener("load", function() {
     mahjongManager = new MahjongManager();
