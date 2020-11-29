@@ -107,17 +107,17 @@ class MahjongManager {
     }
 
     initRound(playInfo) {
-        mahjongManager.setRound(playInfo.round);
-        mahjongManager.setWinds(playInfo.winds);
-        mahjongManager.updatePoints(playInfo.points);
-        mahjongManager.updatePlayerHands(playInfo.playerInfo);
-        mahjongManager.showPlayers();
-        mahjongManager.showPoint();
-        mahjongManager.showWind();
-        mahjongManager.showHands();
-        mahjongManager.showDrawnTile();
-        mahjongManager.clearHo();
-        mahjongManager.operationButton.hideButton();
+        this.setRound(playInfo.round);
+        this.setWinds(playInfo.winds);
+        this.updatePoints(playInfo.points);
+        this.updatePlayerHands(playInfo.playerInfo);
+        this.showPlayers();
+        this.showPoint();
+        this.showWind();
+        this.showHands();
+        this.showDrawnTile();
+        this.clearHo();
+        this.operationButton.hideButton();
     }
 
     setRound(round) {
@@ -154,8 +154,8 @@ class MahjongManager {
         });
     }
 
-    updatePlayerPoints(ronInfo) {
-        this.roundRonModal.updatePlayerPoints(ronInfo);
+    updatePlayerPoints(ronPoints) {
+        this.roundRonModal.updatePlayerPoints(ronPoints);
     }
 
     updatePoints(points) {
@@ -166,8 +166,8 @@ class MahjongManager {
 
     updatePointsByRonInfo(ronInfo) {
         let points = [];
-        ronInfo.forEach(function(ron) {
-            points.push(ron.point);
+        ronInfo.ronPoints.forEach(function(ronPoint) {
+            points.push(ronPoint.point);
         });
 
         this.updatePoints(points);
@@ -245,8 +245,8 @@ class MahjongManager {
         this.ron.hideMessage();
     }
 
-    showRonPlayer() {
-        this.ron.showPlayer();
+    showRonPlayer(playerId) {
+        this.ron.showPlayer(playerId);
     }
 
     hideRonPlayer() {
@@ -584,8 +584,9 @@ class Ron {
         });
     }
 
-    showPlayer() {
+    showPlayer(playerId) {
         $('.ron').each(function(item, i) {
+            item.style.setProperty('--url-ron', "url('/images/ron_" + playerId + ".png')");
             item.classList.add("ron-player");
         });
     }
@@ -616,19 +617,19 @@ class Modal {
 }
 
 class RoundResultModal extends Modal {
-    updatePlayerPoints(ronInfo) {
-        console.log(ronInfo);
+    updatePlayerPoints(ronPoints) {
+        console.log(ronPoints);
         $('.player-icon-round-result').each(function(item, i) {
-            item.style.setProperty('--url-player', "url('/images/player_" + ronInfo[i].playerId + ".png')");
+            item.style.setProperty('--url-player', "url('/images/player_" + ronPoints[i].playerId + ".png')");
         });
         $('.player-point').each(function(item, i) {
-            item.innerHTML = ronInfo[i].point;
+            item.innerHTML = ronPoints[i].point;
         });
         $('.player-point-diff').each(function(item, i) {
-            if (ronInfo[i].pointDiff == 0) {
+            if (ronPoints[i].pointDiff == 0) {
                 item.innerHTML = "";
             } else {
-                item.innerHTML = (ronInfo[i].pointDiff > 0 ? "+" : "") + ronInfo[i].pointDiff;
+                item.innerHTML = (ronPoints[i].pointDiff > 0 ? "+" : "") + ronPoints[i].pointDiff;
             }
         });
     }
@@ -738,7 +739,7 @@ class WebSocketManager {
 
     receiveRon(mahjongManager, ronInfo) {
         console.log(ronInfo);
-        mahjongManager.updatePlayerPoints(ronInfo);
+        mahjongManager.updatePlayerPoints(ronInfo.ronPoints);
 
         mahjongManager.showRonMessage();
         setTimeout(function () {
@@ -746,7 +747,7 @@ class WebSocketManager {
         }, Mahjong.RON_DURATION);
 
         setTimeout(function () {
-            mahjongManager.showRonPlayer();
+            mahjongManager.showRonPlayer(ronInfo.ronPlayerId);
         }, Mahjong.RON_DURATION);
         setTimeout(function () {
             mahjongManager.hideRonPlayer()
@@ -776,7 +777,7 @@ class WebSocketManager {
             mahjongManager.players[playerPosition].discardOther(drawnRoundInfo.discardedTileInfo.discardedTile);
             mahjongManager.players[playerPosition].showHo();
         }
-        mahjongManager.updatePlayerPoints(drawnRoundInfo.ronInfo);
+        mahjongManager.updatePlayerPoints(drawnRoundInfo.ronPoints);
 
         mahjongManager.showRoundDrawnGameModal();
         setTimeout(function() {
@@ -818,7 +819,7 @@ class WebSocketManager {
     }
 }
 
-var mahjongManager;
+let mahjongManager;
 
 window.addEventListener("load", function() {
     mahjongManager = new MahjongManager();

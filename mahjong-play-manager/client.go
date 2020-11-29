@@ -81,13 +81,13 @@ func (c *Client) readPump(m *MahjongPlayManager) {
 				}
 			}
 		case operator.isRon():
-			ronInfo := m.CalculateRonInfo(c.playerId)
-			m.UpdatePlayersPoint(ronInfo)
+			ronPoints := m.CalculateRonPoints(c.playerId)
+			m.UpdatePlayersPoint(ronPoints)
 			m.SetFirstPinfuOrder(c.playerId)
 			m.DealerWin(c.playerId)
 			m.WaitNextMessage()
 
-			m.SendMessageRon(ronInfo)
+			m.SendMessageRon(ronPoints, c.playerId)
 		case operator.isSkip():
 			m.RotatePlayer()
 			if m.CanDistributeTile() {

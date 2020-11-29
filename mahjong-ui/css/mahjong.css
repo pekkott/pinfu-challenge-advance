@@ -28,7 +28,7 @@
     width: 62px;
     height: 5px;
     background: url('/images/b_8_2.gif');
-    background-size: 62px 5px;
+    background-size: contain;
 }
 
 .sub-round {
@@ -412,7 +412,6 @@
     height: 50%;
     top: 55%;
     left: 45%;
-    background: url("/images/ron_0.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -420,6 +419,20 @@
 @media only screen and (max-width: 980px) {
     #round {
         top: 20%;
+        font-size: 50pt;
+    }
+
+    #sub-round {
+        top: 61%;
+        left: 46%;
+        width: 93px;
+        height: 8px;
+        background-size: contain;
+    }
+
+    .sub-round {
+        margin-left: 50px;
+        margin-top: 8px;
         font-size: 50pt;
     }
 
