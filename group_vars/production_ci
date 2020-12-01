@@ -1,7 +1,2 @@
-certbot_auto_renew: True
-certbot_auto_renew_user: "{{ admin_user.name }}"
-certbot_auto_renew_hour: "4"
-certbot_auto_renew_minute: "00"
-
 firewall_open_ports:
   - { port: "22/tcp", zone: "public" }
