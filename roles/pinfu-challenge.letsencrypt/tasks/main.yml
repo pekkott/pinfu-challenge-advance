@@ -25,4 +25,4 @@
 
 - name: Create new cert
   shell: certbot certonly --webroot -w {{ nginx_static_file_directory }}/mahjong-ui --agree-tos --register-unsafely-without-email -d {{ pinfu_challenge_domain }}
-  when: not {{ cert_stat.stat.exists }}
+  when: not cert_stat.stat.exists

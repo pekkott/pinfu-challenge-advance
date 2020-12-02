@@ -21,6 +21,7 @@ ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.c
 app_name: pinfu-challenge
 
 docker_container_names: []
+docker_compose_restart_nginx: False
 
 nginx_port: 80
 nginx_static_file_directory: ""

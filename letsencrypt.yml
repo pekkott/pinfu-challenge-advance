@@ -1,6 +1,9 @@
 - hosts:
     - production_game
   remote_user: "{{ admin_user.name }}"
+  vars:
+    docker_compose_restart_nginx: True
   roles:
     - pinfu-challenge.letsencrypt
     - pinfu-challenge.nginx
+    - pinfu-challenge.docker-compose
