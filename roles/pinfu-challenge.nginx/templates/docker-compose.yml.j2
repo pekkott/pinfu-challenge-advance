@@ -10,6 +10,7 @@ services:
     volumes:
       - /etc/nginx/templates:/etc/nginx/templates
       - {{ nginx_static_file_directory }}:/var/www/pinfu-challenge
+      - {{ letsencrypt_cert_directory }}:{{ letsencrypt_cert_directory }}
       - {{ letsencrypt_cert_directory }}/fullchain.pem:{{ letsencrypt_cert_directory }}/fullchain.pem
       - {{ letsencrypt_cert_directory }}/privkey.pem:{{ letsencrypt_cert_directory }}/privkey.pem
     restart: always
