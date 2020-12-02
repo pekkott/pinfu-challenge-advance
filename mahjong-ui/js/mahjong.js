@@ -689,7 +689,7 @@ class WebSocketManager {
         if (window["WebSocket"]) {
             let params = (new URL(document.location)).searchParams;
             let group_id = params.get('group_id');
-            self.conn = new WebSocket("ws://" + document.location.host + "/ws?group_id=" + group_id);
+            self.conn = new WebSocket("wss://" + document.location.host + "/ws?group_id=" + group_id);
             self.conn.onmessage = function (evt) {
                 let message = JSON.parse(evt.data);
                 self.messageHandlers.forEach(function(item) {
