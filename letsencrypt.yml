@@ -1,6 +1,4 @@
 - hosts:
-    - production_ci
-  remote_user: root
-  connection: local
+    - production_game
   roles:
-    - geerlingguy.certbot
+    - pinfu-challenge.letsencrypt

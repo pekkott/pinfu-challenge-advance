@@ -2,6 +2,7 @@ admin_user: { uid: 100, name: pinfuchan, group: wheel }
 working_directory: "/home/{{ admin_user.name }}"
 ssh_permit_root_login: False
 firewall_open_ports: []
+pinfu_challenge_domain: pinfu-challenge.pekkott.com
 
 system_accounts:
   - "{{ admin_user }}"
@@ -21,7 +22,11 @@ app_name: pinfu-challenge
 
 docker_container_names: []
 
+nginx_port: 80
 nginx_static_file_directory: ""
+
+letsencrypt_cert_directory: /etc/letsencrypt/live/{{ pinfu_challenge_domain }}
+letsencrypt_cert_exist: False
 
 mysql_root_pass : your_root_pass_12345
 mysql_pass: your_pass_12345

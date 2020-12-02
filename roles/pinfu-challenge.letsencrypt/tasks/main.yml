@@ -1,6 +1,32 @@
 ---
 
 - name: Install Certbot
-  package:
+  yum:
     name=certbot
     state=present
+  become: yes
+  become_method: sudo
+
+- name: Create directories for letsencrypt
+  file:
+    dest="{{ item }}"
+    state=directory
+    owner="{{ admin_user.name }}"
+    group="{{ admin_user.name }}"
+    mode=755
+  with_items:
+    - /var/log/letsencrypt
+    - /var/lib/letsencrypt
+    - /etc/letsencrypt
+
+- name: Check cert
+  stat: path=/etc/letsencrypt/live/{{ pinfu_challenge_domain }}
+  register: cert_stat
+
+- name: Set letsencrypt_cert_exist
+  set_fact:
+    letsencrypt_cert_exist: "{{ cert_stat.stat.exists }}"
+
+- name: Create new cert
+  shell: certbot certonly --webroot -w {{ nginx_static_file_directory }}/mahjong-ui --agree-tos --register-unsafely-without-email -d {{ pinfu_challenge_domain }}
+  when: not letsencrypt_cert_exist
