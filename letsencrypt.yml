@@ -1,5 +1,6 @@
 - hosts:
     - production_game
+  remote_user: "{{ admin_user.name }}"
   roles:
     - pinfu-challenge.letsencrypt
     - pinfu-challenge.nginx
