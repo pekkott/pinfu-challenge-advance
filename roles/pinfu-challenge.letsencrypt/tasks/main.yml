@@ -20,13 +20,9 @@
     - /etc/letsencrypt
 
 - name: Check cert
-  stat: path=/etc/letsencrypt/live/{{ pinfu_challenge_domain }}
+  stat: path="{{ letsencrypt_cert_directory }}"
   register: cert_stat
-
-- name: Set letsencrypt_cert_exist
-  set_fact:
-    letsencrypt_cert_exist: "{{ cert_stat.stat.exists }}"
 
 - name: Create new cert
   shell: certbot certonly --webroot -w {{ nginx_static_file_directory }}/mahjong-ui --agree-tos --register-unsafely-without-email -d {{ pinfu_challenge_domain }}
-  when: not letsencrypt_cert_exist
+  when: not {{ cert_stat.stat.exists }}

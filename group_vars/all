@@ -26,7 +26,6 @@ nginx_port: 80
 nginx_static_file_directory: ""
 
 letsencrypt_cert_directory: /etc/letsencrypt/live/{{ pinfu_challenge_domain }}
-letsencrypt_cert_exist: False
 
 mysql_root_pass : your_root_pass_12345
 mysql_pass: your_pass_12345

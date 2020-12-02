@@ -5,6 +5,19 @@
     path: /etc/nginx/templates
     state: directory
 
+- name: Check cert
+  stat: path="{{ letsencrypt_cert_directory }}"
+  register: cert_stat
+
+- name: Set nginx_cert_exist
+  set_fact:
+    nginx_cert_exist: "{{ cert_stat.stat.exists }}"
+
+- name: Set nginx_port
+  set_fact:
+    nginx_port: 443
+  when: "{{ nginx_cert_exist is defined }}"
+
 - name: copy a conf file
   template:
     src=conf/{{ item }}.conf.template.j2

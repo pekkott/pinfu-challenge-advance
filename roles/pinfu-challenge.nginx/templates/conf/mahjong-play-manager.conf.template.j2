@@ -3,7 +3,7 @@ server {
     server_name {{ mahjong_play_manager_server_name }};
     root /var/www/pinfu-challenge/mahjong-ui;
 
-    {% if letsencrypt_cert_exist %}
+    {% if nginx_cert_exist %}
     listen {{ nginx_port }} ssl http2;
     ssl_certificate /etc/letsencrypt/live/pinfu-challenge.pekkott.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/pinfu-challenge.pekkott.com/privkey.pem;
