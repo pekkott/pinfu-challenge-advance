@@ -16,7 +16,7 @@
 - name: Set nginx_port
   set_fact:
     nginx_port: 443
-  when: "{{ nginx_cert_exist is defined }}"
+  when: "{{ nginx_cert_exist }}"
 
 - name: copy a conf file
   template:
