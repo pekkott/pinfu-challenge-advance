@@ -2,3 +2,4 @@
     - production_game
   roles:
     - pinfu-challenge.letsencrypt
+    - pinfu-challenge.nginx
