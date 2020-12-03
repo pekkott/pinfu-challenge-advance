@@ -1,0 +1,3 @@
+source /home/$USER/.bashrc
+
+0 4 1 * * cd /home/$USER; ansible-playbook -i hosts.production letsencrypt.yml --become 1 > /dev/null
