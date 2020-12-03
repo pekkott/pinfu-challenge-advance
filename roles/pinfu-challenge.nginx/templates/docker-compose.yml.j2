@@ -4,12 +4,15 @@ services:
   web:
     image: nginx:1.19.4-alpine
     ports:
-      - "80:80"
+      - "{{ nginx_port }}:{{ nginx_port }}"
     expose:
-      - 80
+      - "{{ nginx_port }}"
     volumes:
       - /etc/nginx/templates:/etc/nginx/templates
       - {{ nginx_static_file_directory }}:/var/www/pinfu-challenge
+      - {{ letsencrypt_cert_directory }}:{{ letsencrypt_cert_directory }}
+      - {{ letsencrypt_cert_directory }}/fullchain.pem:{{ letsencrypt_cert_directory }}/fullchain.pem
+      - {{ letsencrypt_cert_directory }}/privkey.pem:{{ letsencrypt_cert_directory }}/privkey.pem
     restart: always
     environment:
-         - NGINX_PORT=80
+      - NGINX_PORT="{{ nginx_port }}"

@@ -1,0 +1,7 @@
+---
+
+- name: Copy cron file
+  template:
+    src=letsencrypt.j2
+    dest=/etc/cron.d/letsencrypt
+    mode=600

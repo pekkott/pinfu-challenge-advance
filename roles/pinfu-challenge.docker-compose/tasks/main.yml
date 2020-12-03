@@ -7,3 +7,10 @@
     COMPOSE_FILE: "{{ 'docker-compose-' + '.yml:docker-compose-'.join(docker_container_names) + '.yml'}}"
   args:
     chdir: "{{ working_directory }}"
+
+- name: Restart Nginx
+  command: /usr/local/bin/docker-compose -f docker-compose-nginx.yml restart
+  become_user: "{{ admin_user.name }}"
+  args:
+    chdir: "{{ working_directory }}"
+  when: docker_compose_restart_nginx
