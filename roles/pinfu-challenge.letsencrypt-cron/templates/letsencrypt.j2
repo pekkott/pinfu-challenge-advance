@@ -1,3 +1,1 @@
-source /home/$USER/.bashrc
-
-0 4 1 * * cd /home/$USER; ansible-playbook -i hosts.production letsencrypt.yml --become 1 > /dev/null
+0 4 1 * * {{ admin_user.name }} cd pinfu-challenge; ansible-playbook -i hosts.production letsencrypt.yml -l production_game --become > /dev/null
