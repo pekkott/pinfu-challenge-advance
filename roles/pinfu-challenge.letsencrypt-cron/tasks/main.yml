@@ -1,0 +1,9 @@
+---
+
+- name: Copy cron file
+  template:
+    src=letsencrypt.j2
+    dest=/etc/cron.d/letsencrypt
+    owner="{{ admin_user.name }}"
+    group="{{ admin_user.name }}"
+    mode=600

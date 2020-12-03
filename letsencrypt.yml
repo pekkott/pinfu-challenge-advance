@@ -7,3 +7,10 @@
     - pinfu-challenge.letsencrypt
     - pinfu-challenge.nginx
     - pinfu-challenge.docker-compose
+
+- hosts:
+    - production_ci
+  remote_user: root
+  connection: local
+  roles:
+    - pinfu-challenge.letsencrypt-cron
