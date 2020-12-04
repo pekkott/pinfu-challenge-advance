@@ -1,4 +1,5 @@
 admin_user: { uid: 100, name: pinfuchan, group: wheel }
+app_name: pinfu-challenge
 working_directory: "/home/{{ admin_user.name }}"
 ssh_permit_root_login: False
 firewall_open_ports: []
@@ -6,9 +7,6 @@ pinfu_challenge_domain: pinfu-challenge.pekkott.com
 
 system_accounts:
   - "{{ admin_user }}"
-
-docker_users:
-  - "{{ admin_user.name }}"
 
 ansistrano_deploy_to: "/var/www/pinfu-challenge"
 ansistrano_keep_releases: 1
@@ -18,15 +16,21 @@ ansistrano_before_update_code_tasks_file: "{{ playbook_dir }}/roles/pinfu-challe
 ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.copy-external-images/tasks/main.yml"
 ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/roles/pinfu-challenge.create-dist-files/tasks/cleanup.yml"
 
-app_name: pinfu-challenge
-
+docker_users:
+  - "{{ admin_user.name }}"
 docker_container_names: []
 docker_compose_restart_nginx: False
+dockerfiles_directory: "/opt/{{ app_name }}/dockerfiles"
+dockerfiles:
+  - mahjong
+  - mahjong-play-manager
+  - matching-mysql
+  - matching-python
+
+letsencrypt_cert_directory: /etc/letsencrypt/live/{{ pinfu_challenge_domain }}
 
 nginx_port: 80
 nginx_static_file_directory: ""
-
-letsencrypt_cert_directory: /etc/letsencrypt/live/{{ pinfu_challenge_domain }}
 
 mysql_root_pass : your_root_pass_12345
 mysql_pass: your_pass_12345

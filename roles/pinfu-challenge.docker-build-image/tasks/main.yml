@@ -1,11 +1,25 @@
 ---
 
+- name: Create Dockerfiles directory
+  file:
+    path: "{{ dockerfiles_directory }}"
+    owner: "{{ admin_user.name }}"
+    group: "{{ admin_user.name }}"
+    mode: 0755
+    recurse: yes
+    state: directory
+
+- name: Copy dockerfiles
+  copy:
+    src: "{{ playbook_dir }}/dockerfiles/{{ item }}"
+    dest: "{{ dockerfiles_directory }}"
+    owner: "{{ admin_user.name }}"
+    group: "{{ admin_user.name }}"
+    mode: 0755
+  with_items: "{{ dockerfiles }}"
+
 - name: build docker image
   command: docker build ./ -t {{ item }}
   args:
-    chdir: "{{ working_directory }}/{{ app_name }}/docker-images/{{ item }}"
-  with_items:
-    - mahjong
-    - mahjong-play-manager
-    - matching-mysql
-    - matching-python
+    chdir: "{{ dockerfiles_directory }}/{{ item }}"
+  with_items: "{{ dockerfiles }}"

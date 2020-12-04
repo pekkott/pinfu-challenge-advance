@@ -3,7 +3,7 @@
 
 .DS_Store
 # data dir for mysql
-docker-images/mysql/data/
+dockerfiles/mysql/data/
 local_info.md
 
 # ansible-galaxy role

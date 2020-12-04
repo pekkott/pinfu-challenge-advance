@@ -10,9 +10,11 @@ services:
     volumes:
       - /etc/nginx/templates:/etc/nginx/templates
       - {{ nginx_static_file_directory }}:/var/www/pinfu-challenge
+{% if nginx_cert_exist %}
       - {{ letsencrypt_cert_directory }}:{{ letsencrypt_cert_directory }}
       - {{ letsencrypt_cert_directory }}/fullchain.pem:{{ letsencrypt_cert_directory }}/fullchain.pem
       - {{ letsencrypt_cert_directory }}/privkey.pem:{{ letsencrypt_cert_directory }}/privkey.pem
+{% endif %}
     restart: always
     environment:
       - NGINX_PORT="{{ nginx_port }}"
