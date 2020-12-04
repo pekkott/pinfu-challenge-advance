@@ -28,7 +28,7 @@ ansible-playbook -i hosts.production provision.yml --become
 ## Dockerイメージビルド
 
 ```
-cd pinfu-challenge/docker-images
+cd pinfu-challenge/dockerfiles
 docker image build mahjong --tag mahjong
 docker image build mahjong-play-manager --tag mahjong-play-manager
 ```
