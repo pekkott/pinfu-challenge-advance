@@ -89,6 +89,7 @@ class MahjongManager {
             new PlayerUp(3)
         ];
         this.ron = new Ron();
+        this.startModal = new Modal('#modal-start');
         this.roundRonModal = new RoundResultModal('#modal-round-result');
         this.gameResultModal = new GameResultModal('#modal-game-result');
         this.operationButton = new OperationButton();
@@ -251,6 +252,10 @@ class MahjongManager {
 
     hideRonPlayer() {
         this.ron.hidePlayer();
+    }
+
+    closeStartModal() {
+        this.startModal.closeModal();
     }
 
     showRoundRonModal() {
@@ -552,7 +557,7 @@ class Wind {
     show() {
         self = this;
         $('#wind-' + self.positionClassName).each(function(item, i) {
-            item.firstElementChild.className = 'wind wind-' + Mahjong.GET_WIND[self.wind - 1] + '-' + self.positionClassName;
+            item.firstElementChild.className = 'wind-' + Mahjong.GET_WIND[self.wind - 1] + '-' + self.positionClassName;
         });
     }
 }
@@ -711,6 +716,7 @@ class WebSocketManager {
         console.log(playInfo);
         mahjongManager.setPlayersId(playInfo.playerIds);
         mahjongManager.initRound(playInfo);
+        mahjongManager.closeStartModal();
     }
 
     receiveDiscard(mahjongManager, playerInfo) {
