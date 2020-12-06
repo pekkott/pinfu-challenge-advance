@@ -655,6 +655,14 @@
     text-align: center;
 }
 
+.back-to-title-button {
+    background-color: #333;
+    color: white;
+    padding: 1% 2%;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
 .close-modal {
     position: absolute;
     top: 0.5rem;
