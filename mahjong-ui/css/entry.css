@@ -36,14 +36,6 @@
     height: 7% !important;
 }
 
-.cb {
-    float: left;
-}
-
-.landmark {
-    float: none;
-}
-
 .title-pin {
     margin-top: 10%;
     background: url('/images/pin.png');
@@ -160,34 +152,4 @@
         width: 20%;
         height: 5%;
     }
-}
-
-.modal-area {
-    visibility: hidden;
-    opacity : 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.modal-wrapper {
-    position: absolute;
-    top: 47%;
-    left: 50%;
-    transform:translate(-50%,-50%);
-    width: 35%;
-    padding: 10px 40px;
-    background-color: Ivory;
-    border: 3px solid DimGray;
-    border-radius: 10px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.show-modal {
-    visibility: visible;
-    opacity : 1;
 }
