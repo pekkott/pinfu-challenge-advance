@@ -114,6 +114,10 @@
     top: 48%;
 }
 
+.display-none {
+    display: none;
+}
+
 @media only screen and (max-width: 980px) {
     .bg {
         background-size: auto,
