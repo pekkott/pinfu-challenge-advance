@@ -1,0 +1,11 @@
+/var/log/nginx/*log {
+    weekly
+    rotate 90
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        docker ps | grep web | awk '{print $1}' | xargs -i docker exec {} sh -c 'kill -s USR1 `cat /run/nginx.pid`'
+    endscript
+}

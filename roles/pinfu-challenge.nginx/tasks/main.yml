@@ -5,6 +5,14 @@
     path: /etc/nginx/templates
     state: directory
 
+- name: create log directory
+  file:
+    path: /var/log/nginx
+    state: directory
+    owner: "{{ admin_user.name }}"
+    group: "{{ admin_user.name }}"
+    mode: 0755
+
 - name: Check cert
   stat: path="{{ letsencrypt_cert_directory }}"
   register: cert_stat
@@ -18,7 +26,12 @@
     nginx_port: 443
   when: nginx_cert_exist
 
-- name: copy a conf file
+- name: copy nginx.conf file
+  template:
+    src=conf/nginx.conf.j2
+    dest=/etc/nginx/nginx.conf
+
+- name: copy conf files
   template:
     src=conf/{{ item }}.conf.template.j2
     dest=/etc/nginx/templates/{{ item }}.conf.template
@@ -30,3 +43,8 @@
   template:
     src=docker-compose.yml.j2
     dest="{{ working_directory }}/docker-compose-nginx.yml"
+
+- name: copy logrotate conf
+  template:
+    src=logrotate/nginx.j2
+    dest=/etc/logrotate.d/nginx
