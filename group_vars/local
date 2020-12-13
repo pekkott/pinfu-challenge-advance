@@ -6,3 +6,6 @@ nginx_static_file_directory: "/home/{{ admin_user.name }}/pinfu-challenge"
 
 mahjong_play_manager_server_name: "{{ groups.local_game[0] }}"
 mahjong_play_manager_source_directory: "/home/{{ admin_user.name }}/pinfu-challenge"
+
+dockerfiles_directory: "/home/vagrant/{{ app_name }}/dockerfiles"
+mysql_data_directory: "/home/vagrant/{{ app_name }}/matching/mysql/data"
