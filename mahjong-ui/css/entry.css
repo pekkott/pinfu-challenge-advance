@@ -153,3 +153,18 @@
         height: 5%;
     }
 }
+
+#now_matching {
+    background: white;
+    z-index: 99999;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 25vw;
+    top: 25vh;
+    display: none;
+}
+
+#now_matching.visible {
+    display: block;
+}

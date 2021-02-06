@@ -15,8 +15,15 @@ func main() {
 	hubManager := newHubManager()
 	flag.Parse()
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+		print("/ws accessed")
 		serveWs(hubManager, w, r)
 	})
+
+	hubManager_matching := newHubManager()
+	http.HandleFunc("/ws_matching", func(w http.ResponseWriter, r *http.Request) {
+		serveWs_matching(hubManager_matching, w, r)
+	})
+
 	err := http.ListenAndServe(*addr, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
