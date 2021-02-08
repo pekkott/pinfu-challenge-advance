@@ -87,7 +87,6 @@ type MatchedPlayers struct {
 
 // serveWs_matching handles websocket requests for matching from the peer.
 func serveWs_matching(hubManager *HubManager, w http.ResponseWriter, r *http.Request) {
-	log.Println("serveWs_matching")
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
@@ -96,7 +95,9 @@ func serveWs_matching(hubManager *HubManager, w http.ResponseWriter, r *http.Req
 	log.Println("serveWs_matching")
 
 	var uid = r.URL.Query().Get("uid");
-	req, err := http.NewRequest(http.MethodGet, "http://localhost:5000/matching?uid="+uid, nil)
+	// req, err := http.NewRequest(http.MethodGet, "http://localhost:5000/matching?uid="+uid, nil)
+	req, err := http.NewRequest(http.MethodGet, "http://172.18.0.6:5000/matching?uid="+uid, nil)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -106,18 +107,23 @@ func serveWs_matching(hubManager *HubManager, w http.ResponseWriter, r *http.Req
         log.Fatal(err)
 		}
 
+	log.Println(resp.Body)
+
 	var matched_players MatchedPlayers
 	var body []byte
 	body, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err := json.Unmarshal(body,&matched_players); err != nil {
+	log.Println(json.Unmarshal(body,&matched_players))
+	if err := json.Unmarshal(body,&matched_players); err == nil {
 		// 空のjsonが返ってきた(マッチングが成立していない)場合。
 		// log.Fatal(err)
+		log.Println("No group matched ...")
 		return
 	}
 
+	log.Println("matched!!")
 	// uniqueなgroup_idを生成。
 	rand.Seed(time.Now().UnixNano())
 	var groupId = strconv.Itoa(rand.Intn(10000))
@@ -127,7 +133,7 @@ func serveWs_matching(hubManager *HubManager, w http.ResponseWriter, r *http.Req
 		hub = hubManager.createHub(groupId)
 		defer hub.run()
 	}
-	log.Println(groupId)
+	log.Println("groupId: ", groupId)
 
 	players := matched_players.Players
 	for _, pid := range players {

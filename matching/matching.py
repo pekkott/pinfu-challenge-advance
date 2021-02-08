@@ -50,10 +50,15 @@ def matching():
         matched_list.remove(incoming_user)
         for matched_user in matched_list:
           waiting_list.remove(matched_user)
-        res_json = json.dumps({"players": res_list})
+        # res_json = json.dumps({"players": res_list})
         matched_list = []
-        print("res json: {}".format(res_json))
+        # print("res json: {}".format(res_json))
+        # app.logger.debug(res_json)
+        # return res_json
+        res_json = jsonify({"players": res_list})
+        app.logger.debug(res_json)
         return res_json
+        # return jsonify({"players": "hoge"})
 
   waiting_list.append(incoming_user)
   matched_list = []
