@@ -36,7 +36,7 @@
     src=conf/{{ item }}.conf.template.j2
     dest=/etc/nginx/templates/{{ item }}.conf.template
   with_items:
-    - default
+    - letsencrypt
     - mahjong-play-manager
 
 - name: copy docker-compose.yml

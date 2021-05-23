@@ -4,6 +4,10 @@
   vars:
     docker_compose_restart_nginx: True
   roles:
+    - role: pinfu-challenge.nginx
+      vars:
+        nginx_port_for_letsencrypt: 80
+    - pinfu-challenge.docker-compose
     - pinfu-challenge.letsencrypt
     - pinfu-challenge.nginx
     - pinfu-challenge.docker-compose
