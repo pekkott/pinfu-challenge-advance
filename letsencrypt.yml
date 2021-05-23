@@ -9,7 +9,9 @@
         nginx_port_for_letsencrypt: 80
     - pinfu-challenge.docker-compose
     - pinfu-challenge.letsencrypt
-    - pinfu-challenge.nginx
+    - role: pinfu-challenge.nginx
+      vars:
+        nginx_port_for_letsencrypt: 0
     - pinfu-challenge.docker-compose
 
 - hosts:
