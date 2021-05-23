@@ -30,6 +30,7 @@ dockerfiles:
 letsencrypt_cert_directory: /etc/letsencrypt/live/{{ pinfu_challenge_domain }}
 
 nginx_port: 80
+nginx_port_for_letsencrypt: 0
 nginx_static_file_directory: ""
 
 mysql_root_pass : your_root_pass_12345
